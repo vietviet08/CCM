@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 import com.ccm.db.JDBCUntil;
 import com.ccm.model.KhachHang;
-import com.ccm.view.KhachHangForm;
+import com.ccm.view.account.KhachHangForm;
 
 public class KhachHangDAO implements DAOInterface<KhachHang> {
 

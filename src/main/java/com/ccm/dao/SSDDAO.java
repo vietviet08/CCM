@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import com.ccm.db.JDBCUntil;
 import com.ccm.model.ChiTietPhieu;
 import com.ccm.model.SSD;
-import com.ccm.view.CapNhatSSD;
-import com.ccm.view.ThemSSD;
+import com.ccm.view.ssd.CapNhatSSD;
+import com.ccm.view.ssd.ThemSSD;
 
 public class SSDDAO implements DAOInterface<SSD> {
 

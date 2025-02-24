@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import com.ccm.db.JDBCUntil;
 import com.ccm.model.CPU;
 import com.ccm.model.ChiTietPhieu;
-import com.ccm.view.CapNhatCPU;
-import com.ccm.view.ThemCPU;
+import com.ccm.view.cpu.CapNhatCPU;
+import com.ccm.view.cpu.ThemCPU;
 
 public class CPUDAO implements DAOInterface<CPU> {
 

@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import com.ccm.db.JDBCUntil;
 import com.ccm.model.ChiTietPhieu;
 import com.ccm.model.HDD;
-import com.ccm.view.CapNhatHDD;
-import com.ccm.view.ThemHDD;
+import com.ccm.view.hdd.CapNhatHDD;
+import com.ccm.view.hdd.ThemHDD;
 
 public class HDDDAO implements DAOInterface<HDD> {
 	public static HDDDAO getInstance() {

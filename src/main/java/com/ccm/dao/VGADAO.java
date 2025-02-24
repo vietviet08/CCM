@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import com.ccm.db.JDBCUntil;
 import com.ccm.model.ChiTietPhieu;
 import com.ccm.model.VGA;
-import com.ccm.view.CapNhatVGA;
-import com.ccm.view.ThemVGA;
+import com.ccm.view.vga.CapNhatVGA;
+import com.ccm.view.vga.ThemVGA;
 
 public class VGADAO implements DAOInterface<VGA> {
 

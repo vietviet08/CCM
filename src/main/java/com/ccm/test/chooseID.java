@@ -5,12 +5,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.sql.Blob;
-import java.util.ArrayList;
-
-import com.ccm.dao.KhachHangDAO;
-import com.ccm.dao.SanPhamDAO;
-import com.ccm.model.Products;
-import com.ccm.view.KhachHangForm;
 
 public class chooseID {
 	public static void main(String[] args) throws FileNotFoundException {

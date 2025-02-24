@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import com.ccm.db.JDBCUntil;
 import com.ccm.model.ChiTietPhieu;
 import com.ccm.model.MainBoard;
-import com.ccm.view.CapNhatMainboard;
-import com.ccm.view.ThemMainboard;
+import com.ccm.view.mainboard.CapNhatMainboard;
+import com.ccm.view.mainboard.ThemMainboard;
 
 public class MainBoardDAO implements DAOInterface<MainBoard> {
 	public static MainBoardDAO getInstance() {

@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import com.ccm.db.JDBCUntil;
 import com.ccm.model.ChiTietPhieu;
 import com.ccm.model.PSU;
-import com.ccm.view.CapNhatPSU;
-import com.ccm.view.ThemPSU;
+import com.ccm.view.psu.CapNhatPSU;
+import com.ccm.view.psu.ThemPSU;
 
 public class PSUDAO implements DAOInterface<PSU> {
 	public static PSUDAO getInstance() {

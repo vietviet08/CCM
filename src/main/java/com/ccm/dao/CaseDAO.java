@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import com.ccm.db.JDBCUntil;
 import com.ccm.model.Case;
 import com.ccm.model.ChiTietPhieu;
-import com.ccm.view.CapNhatCase;
-import com.ccm.view.ThemCase;
+import com.ccm.view.cases.CapNhatCase;
+import com.ccm.view.cases.ThemCase;
 
 public class CaseDAO implements DAOInterface<Case> {
 

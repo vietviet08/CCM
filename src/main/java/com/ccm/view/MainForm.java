@@ -27,6 +27,21 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.EmptyBorder;
 
+import com.ccm.view.account.KhachHangForm;
+import com.ccm.view.cases.CaseForm;
+import com.ccm.view.cpu.CPUForm;
+import com.ccm.view.exports.PhieuXuatForm;
+import com.ccm.view.exports.XuatHangForm;
+import com.ccm.view.hdd.HDDForm;
+import com.ccm.view.imports.NhapHangForm;
+import com.ccm.view.imports.PhieuNhapForm;
+import com.ccm.view.mainboard.MainboardForm;
+import com.ccm.view.npp.NhaPhanPhoiForm;
+import com.ccm.view.product.ProductForm;
+import com.ccm.view.psu.PSUForm;
+import com.ccm.view.ram.RAMForm;
+import com.ccm.view.ssd.SSDForm;
+import com.ccm.view.vga.VGAForm;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 

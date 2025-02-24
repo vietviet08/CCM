@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import com.ccm.db.JDBCUntil;
 import com.ccm.model.ChiTietPhieu;
 import com.ccm.model.RAM;
-import com.ccm.view.CapNhatRAM;
-import com.ccm.view.ThemRAM;
+import com.ccm.view.ram.CapNhatRAM;
+import com.ccm.view.ram.ThemRAM;
 
 public class RAMDAO implements DAOInterface<RAM> {
 
