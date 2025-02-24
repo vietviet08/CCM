@@ -5,8 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import db.JDBCUntil;
-import model.PhieuNhap;
+import com.ccm.db.JDBCUntil;
+import com.ccm.model.PhieuNhap;
 
 public class PhieuNhapDAO implements DAOInterface<PhieuNhap> {
 

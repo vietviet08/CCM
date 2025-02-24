@@ -15,6 +15,7 @@ import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import com.ccm.model.ChiTietPhieu;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
@@ -27,16 +28,15 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import dao.ChiTietPhieuNhapDAO;
-import dao.ChiTietPhieuXuatDAO;
-import dao.KhachHangDAO;
-import dao.NhaPhanPhoiDAO;
-import dao.PhieuNhapDAO;
-import dao.PhieuXuatDAO;
-import font.SetFont;
-import model.ChiTietPhieu;
-import model.PhieuNhap;
-import model.PhieuXuat;
+import com.ccm.dao.ChiTietPhieuNhapDAO;
+import com.ccm.dao.ChiTietPhieuXuatDAO;
+import com.ccm.dao.KhachHangDAO;
+import com.ccm.dao.NhaPhanPhoiDAO;
+import com.ccm.dao.PhieuNhapDAO;
+import com.ccm.dao.PhieuXuatDAO;
+import com.ccm.font.SetFont;
+import com.ccm.model.PhieuNhap;
+import com.ccm.model.PhieuXuat;
 
 public class XuatPDF {
 

@@ -10,25 +10,25 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import db.JDBCUntil;
-import model.ChiTietPhieu;
-import model.ssd;
-import view.CapNhatSSD;
-import view.ThemSSD;
+import com.ccm.db.JDBCUntil;
+import com.ccm.model.ChiTietPhieu;
+import com.ccm.model.SSD;
+import com.ccm.view.CapNhatSSD;
+import com.ccm.view.ThemSSD;
 
-public class SSDDAO implements DAOInterface<ssd> {
+public class SSDDAO implements DAOInterface<SSD> {
 
 	public static SSDDAO getInstance() {
 		return new SSDDAO();
 	}
 
 	@Override
-	public int insert(ssd t) {
+	public int insert(SSD t) {
 		int check = 0;
 		try {
 
 			Connection con = JDBCUntil.getConnection();
-			String sql = "insert into ssd (idsanpham, idssd, tenssd, hang, dungluong, loai, tocdodoc, tocdoghi, tonkho, gia, baohanh, img) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "insert into SSD (idsanpham, idSSD, tenSSD, hang, dungluong, loai, tocdodoc, tocdoghi, tonkho, gia, baohanh, img) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -57,12 +57,12 @@ public class SSDDAO implements DAOInterface<ssd> {
 		return check;
 	}
 
-	public int insertIMGURL(ssd t, String stringUrl) {
+	public int insertIMGURL(SSD t, String stringUrl) {
 		int check = 0;
 		try {
 
 			Connection con = JDBCUntil.getConnection();
-			String sql = "insert into ssd (idsanpham, idssd, tenssd, hang, dungluong, loai, tocdodoc, tocdoghi, tonkho, gia, baohanh, img) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "insert into SSD (idsanpham, idSSD, tenSSD, hang, dungluong, loai, tocdodoc, tocdoghi, tonkho, gia, baohanh, img) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -94,12 +94,12 @@ public class SSDDAO implements DAOInterface<ssd> {
 		return check;
 	}
 
-	public int insertNotIMG(ssd t) {
+	public int insertNotIMG(SSD t) {
 		int check = 0;
 		try {
 
 			Connection con = JDBCUntil.getConnection();
-			String sql = "insert into ssd (idsanpham, idssd, tenssd, hang, dungluong, loai, tocdodoc, tocdoghi, tonkho, gia, baohanh) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "insert into SSD (idsanpham, idSSD, tenSSD, hang, dungluong, loai, tocdodoc, tocdoghi, tonkho, gia, baohanh) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -125,12 +125,12 @@ public class SSDDAO implements DAOInterface<ssd> {
 	}
 
 	@Override
-	public int update(ssd t) {
+	public int update(SSD t) {
 		int check = 0;
 		try {
 
 			Connection con = JDBCUntil.getConnection();
-			String sql = "update ssd set idsanpham = ? , tenssd = ?, hang = ?, dungluong = ?, loai = ?, tocdodoc = ?, tocdoghi = ?, tonkho = ?, gia = ?, baohanh = ?, img = ? where idssd = ?;";
+			String sql = "update SSD set idsanpham = ? , tenSSD = ?, hang = ?, dungluong = ?, loai = ?, tocdodoc = ?, tocdoghi = ?, tonkho = ?, gia = ?, baohanh = ?, img = ? where idSSD = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -159,12 +159,12 @@ public class SSDDAO implements DAOInterface<ssd> {
 		return check;
 	}
 
-	public int updateIMGURL(ssd t, String stringUrl) {
+	public int updateIMGURL(SSD t, String stringUrl) {
 		int check = 0;
 		try {
 
 			Connection con = JDBCUntil.getConnection();
-			String sql = "update ssd set idsanpham = ? , tenssd = ?, hang = ?, dungluong = ?, loai = ?, tocdodoc = ?, tocdoghi = ?, tonkho = ?, gia = ?, baohanh = ?, img = ? where idssd = ?;";
+			String sql = "update SSD set idsanpham = ? , tenSSD = ?, hang = ?, dungluong = ?, loai = ?, tocdodoc = ?, tocdoghi = ?, tonkho = ?, gia = ?, baohanh = ?, img = ? where idSSD = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -195,12 +195,12 @@ public class SSDDAO implements DAOInterface<ssd> {
 		return check;
 	}
 
-	public int updateNotIMG(ssd t) {
+	public int updateNotIMG(SSD t) {
 		int check = 0;
 		try {
 
 			Connection con = JDBCUntil.getConnection();
-			String sql = "update ssd set idsanpham = ? , tenssd = ?, hang = ?, dungluong = ?, loai = ?, tocdodoc = ?, tocdoghi = ?, tonkho = ?, gia = ?, baohanh = ? where idssd = ?;";
+			String sql = "update SSD set idsanpham = ? , tenSSD = ?, hang = ?, dungluong = ?, loai = ?, tocdodoc = ?, tocdoghi = ?, tonkho = ?, gia = ?, baohanh = ? where idSSD = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -215,7 +215,7 @@ public class SSDDAO implements DAOInterface<ssd> {
 			ps.setDouble(9, t.getGia());
 			ps.setString(10, t.getBaoHanh());
 
-			ps.setString(12, t.getIdSdd());
+			ps.setString(11, t.getIdSdd());
 			check = ps.executeUpdate();
 			JDBCUntil.closeConnection(con);
 		} catch (Exception e) {
@@ -230,13 +230,13 @@ public class SSDDAO implements DAOInterface<ssd> {
 
 		try {
 			Connection con = JDBCUntil.getConnection();
-			String sql = "UPDATE ssd SET  tonkho = tonkho + ? WHERE idssd = ?;";
+			String sql = "UPDATE SSD SET  tonkho = tonkho + ? WHERE idSSD = ?;";
 			if (nhapHang == false)
-				sql = "UPDATE ssd SET  tonkho = tonkho - ? WHERE idssd = ?;";
+				sql = "UPDATE SSD SET  tonkho = tonkho - ? WHERE idSSD = ?;";
 
 			for (ChiTietPhieu productNhap : pn) {
 
-				if (productNhap.getIdRieng().contains("ssd")) {
+				if (productNhap.getIdRieng().contains("SSD")) {
 
 					PreparedStatement ps = con.prepareStatement(sql);
 					ps.setInt(1, productNhap.getSoLuong());
@@ -255,12 +255,12 @@ public class SSDDAO implements DAOInterface<ssd> {
 	}
 
 	@Override
-	public int delete(ssd t) {
+	public int delete(SSD t) {
 		int check = 0;
 		try {
 
 			Connection con = JDBCUntil.getConnection();
-			String sql = "delete from ssd where idssd = ?;";
+			String sql = "delete from SSD where idSSD = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -275,22 +275,22 @@ public class SSDDAO implements DAOInterface<ssd> {
 	}
 
 	@Override
-	public ArrayList<ssd> selectAll() {
-		ArrayList<ssd> list = new ArrayList<ssd>();
+	public ArrayList<SSD> selectAll() {
+		ArrayList<SSD> list = new ArrayList<SSD>();
 
 		try {
 			Connection con = JDBCUntil.getConnection();
-			String sql = "select * from ssd;";
+			String sql = "select * from SSD;";
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ResultSet rs = ps.executeQuery();
-//			idsanpham, idssd, tenssd, hang, dungluong, loai, tocdodoc, tocdoghi, tonkho, gia, baohanh
+//			idsanpham, idSSD, tenSSD, hang, dungluong, loai, tocdodoc, tocdoghi, tonkho, gia, baohanh
 			while (rs.next()) {
-				ssd ssd = new ssd(rs.getString("idsanpham"), rs.getString("idssd"), rs.getString("tenssd"),
+				SSD SSD = new SSD(rs.getString("idsanpham"), rs.getString("idSSD"), rs.getString("tenSSD"),
 						rs.getString("hang"), rs.getString("dungluong"), rs.getString("loai"), rs.getString("tocdodoc"),
 						rs.getString("tocdoghi"), rs.getInt("tonkho"), rs.getDouble("gia"), rs.getString("baohanh"),
 						rs.getBlob("img"));
-				list.add(ssd);
+				list.add(SSD);
 			}
 			JDBCUntil.closeConnection(con);
 		} catch (Exception e) {
@@ -300,17 +300,17 @@ public class SSDDAO implements DAOInterface<ssd> {
 	}
 
 	@Override
-	public ssd selectById(String t) {
-		ssd ssd = null;
+	public SSD selectById(String t) {
+		SSD SSD = null;
 		try {
 			Connection con = JDBCUntil.getConnection();
-			String sql = "select * from ssd where idssd = ?;";
+			String sql = "select * from SSD where idSSD = ?;";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, t);
 			ResultSet rs = ps.executeQuery();
-//			idsanpham, idssd, tenssd, hang, dungluong, loai, tocdodoc, tocdoghi, tonkho, gia, baohanh
+//			idsanpham, idSSD, tenSSD, hang, dungluong, loai, tocdodoc, tocdoghi, tonkho, gia, baohanh
 			while (rs.next()) {
-				ssd = new ssd(rs.getString("idsanpham"), rs.getString("idssd"), rs.getString("tenssd"),
+				SSD = new SSD(rs.getString("idsanpham"), rs.getString("idSSD"), rs.getString("tenSSD"),
 						rs.getString("hang"), rs.getString("dungluong"), rs.getString("loai"), rs.getString("tocdodoc"),
 						rs.getString("tocdoghi"), rs.getInt("tonkho"), rs.getDouble("gia"), rs.getString("baohanh"),
 						rs.getBlob("img"));
@@ -319,12 +319,12 @@ public class SSDDAO implements DAOInterface<ssd> {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		return ssd;
+		return SSD;
 	}
 
 	public static int tongTonKho() {
 		int tonkho = 0;
-		String sql = "SELECT SUM(ssd.tonkho) AS total\r\n" + "FROM ssd";
+		String sql = "SELECT SUM(SSD.tonkho) AS total\r\n" + "FROM SSD";
 		try {
 			Connection con = JDBCUntil.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);

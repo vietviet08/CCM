@@ -10,9 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import db.JDBCUntil;
-import model.KhachHang;
-import view.KhachHangForm;
+import com.ccm.db.JDBCUntil;
+import com.ccm.model.KhachHang;
+import com.ccm.view.KhachHangForm;
 
 public class KhachHangDAO implements DAOInterface<KhachHang> {
 

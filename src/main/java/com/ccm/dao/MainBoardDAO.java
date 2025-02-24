@@ -12,24 +12,24 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import db.JDBCUntil;
-import model.ChiTietPhieu;
-import model.mainboard;
-import view.CapNhatMainboard;
-import view.ThemMainboard;
+import com.ccm.db.JDBCUntil;
+import com.ccm.model.ChiTietPhieu;
+import com.ccm.model.MainBoard;
+import com.ccm.view.CapNhatMainboard;
+import com.ccm.view.ThemMainboard;
 
-public class MainBoardDAO implements DAOInterface<mainboard> {
+public class MainBoardDAO implements DAOInterface<MainBoard> {
 	public static MainBoardDAO getInstance() {
 		return new MainBoardDAO();
 	}
 
 	@Override
-	public int insert(mainboard t) {
+	public int insert(MainBoard t) {
 		int check = 0;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
-			String sql = "insert into mainboard (idsanpham, idmainboard, tenmain, tenhang, hotrocpu, hotroram, kichthuoc, tonkho, dongia, baohanh, img) values (?,?,?,?,?,?,?,?,?,?,?);";
+			String sql = "insert into MainBoard (idsanpham, idMainBoard, tenmain, tenhang, hotrocpu, hotroram, kichthuoc, tonkho, dongia, baohanh, img) values (?,?,?,?,?,?,?,?,?,?,?);";
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ps.setString(1, t.getIdSanPham());
@@ -59,12 +59,12 @@ public class MainBoardDAO implements DAOInterface<mainboard> {
 		return check;
 	}
 
-	public int insertIMGURL(mainboard t, String stringUrl) {
+	public int insertIMGURL(MainBoard t, String stringUrl) {
 		int check = 0;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
-			String sql = "insert into mainboard (idsanpham, idmainboard, tenmain, tenhang, hotrocpu, hotroram, kichthuoc, tonkho, dongia, baohanh, img) values (?,?,?,?,?,?,?,?,?,?,?);";
+			String sql = "insert into MainBoard (idsanpham, idMainBoard, tenmain, tenhang, hotrocpu, hotroram, kichthuoc, tonkho, dongia, baohanh, img) values (?,?,?,?,?,?,?,?,?,?,?);";
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ps.setString(1, t.getIdSanPham());
@@ -92,12 +92,12 @@ public class MainBoardDAO implements DAOInterface<mainboard> {
 		return check;
 	}
 
-	public int insertNotIMG(mainboard t) {
+	public int insertNotIMG(MainBoard t) {
 		int check = 0;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
-			String sql = "insert into mainboard (idsanpham, idmainboard, tenmain, tenhang, hotrocpu, hotroram, kichthuoc, tonkho, dongia, baohanh) values (?,?,?,?,?,?,?,?,?,?);";
+			String sql = "insert into MainBoard (idsanpham, idMainBoard, tenmain, tenhang, hotrocpu, hotroram, kichthuoc, tonkho, dongia, baohanh) values (?,?,?,?,?,?,?,?,?,?);";
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ps.setString(1, t.getIdSanPham());
@@ -121,13 +121,13 @@ public class MainBoardDAO implements DAOInterface<mainboard> {
 	}
 
 	@Override
-	public int update(mainboard t) {
+	public int update(MainBoard t) {
 		int check = 0;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
-			String sql = "update mainboard set idsanpham = ?, tenmain = ?, tenhang = ?, hotrocpu = ?,"
-					+ " hotroram = ?, kichthuoc = ?, dongia = ?," + " baohanh = ?, img = ? where idmainboard = ?;";
+			String sql = "update MainBoard set idsanpham = ?, tenmain = ?, tenhang = ?, hotrocpu = ?,"
+					+ " hotroram = ?, kichthuoc = ?, dongia = ?," + " baohanh = ?, img = ? where idMainBoard = ?;";
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ps.setString(1, t.getIdSanPham());
@@ -158,13 +158,13 @@ public class MainBoardDAO implements DAOInterface<mainboard> {
 		return check;
 	}
 
-	public int updateIMGURL(mainboard t, String stringUrl) {
+	public int updateIMGURL(MainBoard t, String stringUrl) {
 		int check = 0;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
-			String sql = "update mainboard set idsanpham = ?, tenmain = ?, tenhang = ?, hotrocpu = ?,"
-					+ " hotroram = ?, kichthuoc = ?, dongia = ?," + " baohanh = ?, img = ? where idmainboard = ?;";
+			String sql = "update MainBoard set idsanpham = ?, tenmain = ?, tenhang = ?, hotrocpu = ?,"
+					+ " hotroram = ?, kichthuoc = ?, dongia = ?," + " baohanh = ?, img = ? where idMainBoard = ?;";
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ps.setString(1, t.getIdSanPham());
@@ -192,13 +192,13 @@ public class MainBoardDAO implements DAOInterface<mainboard> {
 		return check;
 	}
 
-	public int updateNotIMG(mainboard t) {
+	public int updateNotIMG(MainBoard t) {
 		int check = 0;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
-			String sql = "update mainboard set idsanpham = ?, tenmain = ?, tenhang = ?, hotrocpu = ?,"
-					+ " hotroram = ?, kichthuoc = ?, dongia = ?," + " baohanh = ? where idmainboard = ?;";
+			String sql = "update MainBoard set idsanpham = ?, tenmain = ?, tenhang = ?, hotrocpu = ?,"
+					+ " hotroram = ?, kichthuoc = ?, dongia = ?," + " baohanh = ? where idMainBoard = ?;";
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ps.setString(1, t.getIdSanPham());
@@ -226,9 +226,9 @@ public class MainBoardDAO implements DAOInterface<mainboard> {
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "UPDATE mainboard SET  tonkho = tonkho + ? WHERE idmainboard = ?;";
+			String sql = "UPDATE MainBoard SET  tonkho = tonkho + ? WHERE idMainBoard = ?;";
 			if (nhapHang == false)
-				sql = "UPDATE mainboard SET  tonkho = tonkho - ? WHERE idmainboard = ?;";
+				sql = "UPDATE MainBoard SET  tonkho = tonkho - ? WHERE idMainBoard = ?;";
 			for (ChiTietPhieu productNhap : pn) {
 
 				if (productNhap.getIdRieng().contains("mba")) {
@@ -250,12 +250,12 @@ public class MainBoardDAO implements DAOInterface<mainboard> {
 	}
 
 	@Override
-	public int delete(mainboard t) {
+	public int delete(MainBoard t) {
 		int check = 0;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
-			String sql = "delete from mainboard where idmainboard = ?;";
+			String sql = "delete from MainBoard where idMainBoard = ?;";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, t.getIdMainboard());
 			check = ps.executeUpdate();
@@ -266,17 +266,17 @@ public class MainBoardDAO implements DAOInterface<mainboard> {
 	}
 
 	@Override
-	public ArrayList<mainboard> selectAll() {
-		ArrayList<mainboard> list = new ArrayList<mainboard>();
+	public ArrayList<MainBoard> selectAll() {
+		ArrayList<MainBoard> list = new ArrayList<MainBoard>();
 		try {
 			Connection con = JDBCUntil.getConnection();
-			String sql = "select * from mainboard;";
+			String sql = "select * from MainBoard;";
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				mainboard mb = new mainboard(rs.getString("idsanpham"), rs.getString("idmainboard"),
+				MainBoard mb = new MainBoard(rs.getString("idsanpham"), rs.getString("idMainBoard"),
 						rs.getString("tenmain"), rs.getString("tenhang"), rs.getString("hotrocpu"),
 						rs.getString("hotroram"), rs.getString("kichthuoc"), rs.getInt("tonkho"),
 						rs.getDouble("dongia"), rs.getString("baohanh"), rs.getBlob("img"));
@@ -291,18 +291,18 @@ public class MainBoardDAO implements DAOInterface<mainboard> {
 	}
 
 	@Override
-	public mainboard selectById(String t) {
-		mainboard mb = null;
+	public MainBoard selectById(String t) {
+		MainBoard mb = null;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
-			String sql = "select * from mainboard where idmainboard = ?;";
+			String sql = "select * from MainBoard where idMainBoard = ?;";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, t);
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				mb = new mainboard(rs.getString("idsanpham"), rs.getString("idmainboard"), rs.getString("tenmain"),
+				mb = new MainBoard(rs.getString("idsanpham"), rs.getString("idMainBoard"), rs.getString("tenmain"),
 						rs.getString("tenhang"), rs.getString("hotrocpu"), rs.getString("hotroram"),
 						rs.getString("kichthuoc"), rs.getInt("tonkho"), rs.getDouble("dongia"), rs.getString("baohanh"),
 						rs.getBlob("img"));
@@ -317,19 +317,19 @@ public class MainBoardDAO implements DAOInterface<mainboard> {
 
 	}
 
-	public ArrayList<mainboard> selectNhapHang() {
-		ArrayList<mainboard> c = new ArrayList<mainboard>();
+	public ArrayList<MainBoard> selectNhapHang() {
+		ArrayList<MainBoard> c = new ArrayList<MainBoard>();
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "SELECT * FROM mainboard;";
+			String sql = "SELECT * FROM MainBoard;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				mainboard mb = new mainboard(rs.getString("idsanpham"), rs.getString("idcpu"), rs.getString("tencpu"),
+				MainBoard mb = new MainBoard(rs.getString("idsanpham"), rs.getString("idcpu"), rs.getString("tencpu"),
 						rs.getDouble("dongia"), rs.getString("baohanh"));
 				c.add(mb);
 			}
@@ -340,12 +340,12 @@ public class MainBoardDAO implements DAOInterface<mainboard> {
 		return c;
 	}
 
-	public ArrayList<mainboard> selectByIdSanPham(String t) {
-		ArrayList<mainboard> list = new ArrayList<mainboard>();
+	public ArrayList<MainBoard> selectByIdSanPham(String t) {
+		ArrayList<MainBoard> list = new ArrayList<MainBoard>();
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "SELECT * FROM mainboard WHERE idsanpham = ?;";
+			String sql = "SELECT * FROM MainBoard WHERE idsanpham = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -354,7 +354,7 @@ public class MainBoardDAO implements DAOInterface<mainboard> {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				mainboard mb = new mainboard(rs.getString("idsanpham"), rs.getString("idmainboard"),
+				MainBoard mb = new MainBoard(rs.getString("idsanpham"), rs.getString("idMainBoard"),
 						rs.getString("tenmain"), rs.getString("tenhang"), rs.getString("hotrocpu"),
 						rs.getString("hotroram"), rs.getString("kichthuoc"), rs.getInt("tonkho"),
 						rs.getDouble("dongia"), rs.getString("baohanh"), rs.getBlob("img"));
@@ -370,7 +370,7 @@ public class MainBoardDAO implements DAOInterface<mainboard> {
 	
 	public static int tongTonKho() {
 		int tonkho = 0;
-		String sql = "SELECT SUM(mainboard.tonkho) AS total\r\n" + "FROM mainboard";
+		String sql = "SELECT SUM(MainBoard.tonkho) AS total\r\n" + "FROM MainBoard";
 		try {
 			Connection con = JDBCUntil.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);

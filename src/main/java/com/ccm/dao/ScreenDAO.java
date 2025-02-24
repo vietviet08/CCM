@@ -2,39 +2,39 @@ package com.ccm.dao;
 
 import java.util.ArrayList;
 
-import model.screen;
+import com.ccm.model.Screen;
 
-public class ScreenDAO implements DAOInterface<screen>{
+public class ScreenDAO implements DAOInterface<Screen>{
 	public static ScreenDAO getInstance() {
 		return new ScreenDAO();
 	}
 
 	@Override
-	public int insert(screen t) {
+	public int insert(Screen t) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int update(screen t) {
+	public int update(Screen t) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int delete(screen t) {
+	public int delete(Screen t) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public ArrayList<screen> selectAll() {
+	public ArrayList<Screen> selectAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public screen selectById(String t) {
+	public Screen selectById(String t) {
 		// TODO Auto-generated method stub
 		return null;
 	}

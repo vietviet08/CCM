@@ -12,11 +12,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import db.JDBCUntil;
-import model.Case;
-import model.ChiTietPhieu;
-import view.CapNhatCase;
-import view.ThemCase;
+import com.ccm.db.JDBCUntil;
+import com.ccm.model.Case;
+import com.ccm.model.ChiTietPhieu;
+import com.ccm.view.CapNhatCase;
+import com.ccm.view.ThemCase;
 
 public class CaseDAO implements DAOInterface<Case> {
 

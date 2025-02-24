@@ -7,10 +7,10 @@ import java.io.InputStream;
 import java.sql.Blob;
 import java.util.ArrayList;
 
-import dao.KhachHangDAO;
-import dao.SanPhamDAO;
-import model.Products;
-import view.KhachHangForm;
+import com.ccm.dao.KhachHangDAO;
+import com.ccm.dao.SanPhamDAO;
+import com.ccm.model.Products;
+import com.ccm.view.KhachHangForm;
 
 public class chooseID {
 	public static void main(String[] args) throws FileNotFoundException {

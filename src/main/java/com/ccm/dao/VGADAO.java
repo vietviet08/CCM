@@ -12,26 +12,26 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import db.JDBCUntil;
-import model.ChiTietPhieu;
-import model.vga;
-import view.CapNhatVGA;
-import view.ThemVGA;
+import com.ccm.db.JDBCUntil;
+import com.ccm.model.ChiTietPhieu;
+import com.ccm.model.VGA;
+import com.ccm.view.CapNhatVGA;
+import com.ccm.view.ThemVGA;
 
-public class VGADAO implements DAOInterface<vga> {
+public class VGADAO implements DAOInterface<VGA> {
 
 	public static VGADAO getInstance() {
 		return new VGADAO();
 	}
 
 	@Override
-	public int insert(vga t) {
+	public int insert(VGA t) {
 		int check = 0;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "INSERT INTO vga (idsanpham, idvga, tenvga, hangvga, bonho, tonkho, dongia, baohanh, img) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "INSERT INTO VGA (idsanpham, idVGA, tenVGA, hangVGA, bonho, tonkho, dongia, baohanh, img) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -62,13 +62,13 @@ public class VGADAO implements DAOInterface<vga> {
 		return check;
 	}
 
-	public int insertIMGURL(vga t, String stringUrl) {
+	public int insertIMGURL(VGA t, String stringUrl) {
 		int check = 0;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "INSERT INTO vga (idsanpham, idvga, tenvga, hangvga, bonho, tonkho, dongia, baohanh, img) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "INSERT INTO VGA (idsanpham, idVGA, tenVGA, hangVGA, bonho, tonkho, dongia, baohanh, img) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -97,13 +97,13 @@ public class VGADAO implements DAOInterface<vga> {
 		return check;
 	}
 
-	public int insertNotIMG(vga t) {
+	public int insertNotIMG(VGA t) {
 		int check = 0;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "INSERT INTO vga (idsanpham, idvga, tenvga, hangvga, bonho, tonkho, dongia, baohanh) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "INSERT INTO VGA (idsanpham, idVGA, tenVGA, hangVGA, bonho, tonkho, dongia, baohanh) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -128,13 +128,13 @@ public class VGADAO implements DAOInterface<vga> {
 	}
 
 	@Override
-	public int update(vga t) {
+	public int update(VGA t) {
 		int check = 0;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "UPDATE vga SET idsanpham = ?, tenvga = ?, hangvga = ?, bonho = ?, tonkho = ?, dongia = ?, baohanh = ?, img = ? WHERE idvga = ?;";
+			String sql = "UPDATE VGA SET idsanpham = ?, tenVGA = ?, hangVGA = ?, bonho = ?, tonkho = ?, dongia = ?, baohanh = ?, img = ? WHERE idVGA = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -165,13 +165,13 @@ public class VGADAO implements DAOInterface<vga> {
 		return check;
 	}
 
-	public int updateIMGURL(vga t, String stringUrl) {
+	public int updateIMGURL(VGA t, String stringUrl) {
 		int check = 0;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "UPDATE vga SET idsanpham = ?, tenvga = ?, hangvga = ?, bonho = ?, tonkho = ?, dongia = ?, baohanh = ?, img = ? WHERE idvga = ?;";
+			String sql = "UPDATE VGA SET idsanpham = ?, tenVGA = ?, hangVGA = ?, bonho = ?, tonkho = ?, dongia = ?, baohanh = ?, img = ? WHERE idVGA = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -200,13 +200,13 @@ public class VGADAO implements DAOInterface<vga> {
 		return check;
 	}
 
-	public int updateNotIMG(vga t) {
+	public int updateNotIMG(VGA t) {
 		int check = 0;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "UPDATE vga SET idsanpham = ?, tenvga = ?, hangvga = ?, bonho = ?, tonkho = ?, dongia = ?, baohanh = ? WHERE idvga = ?;";
+			String sql = "UPDATE VGA SET idsanpham = ?, tenVGA = ?, hangVGA = ?, bonho = ?, tonkho = ?, dongia = ?, baohanh = ? WHERE idVGA = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -237,11 +237,11 @@ public class VGADAO implements DAOInterface<vga> {
 			Connection con = JDBCUntil.getConnection();
 
 			for (ChiTietPhieu productNhap : pn) {
-				if (productNhap.getIdRieng().contains("vga")) {
+				if (productNhap.getIdRieng().contains("VGA")) {
 
-					String sql = "UPDATE vga SET  tonkho = tonkho + ? WHERE idvga = ?;";
+					String sql = "UPDATE VGA SET  tonkho = tonkho + ? WHERE idVGA = ?;";
 					if(nhapHang == false)
-						sql = "UPDATE vga SET  tonkho = tonkho - ? WHERE idvga = ?;";
+						sql = "UPDATE VGA SET  tonkho = tonkho - ? WHERE idVGA = ?;";
 
 					PreparedStatement ps = con.prepareStatement(sql);
 					ps.setInt(1, productNhap.getSoLuong());
@@ -260,13 +260,13 @@ public class VGADAO implements DAOInterface<vga> {
 	}
 
 	@Override
-	public int delete(vga t) {
+	public int delete(VGA t) {
 		int check = 0;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "DELETE FROM vga WHERE idvga = ?;";
+			String sql = "DELETE FROM VGA WHERE idVGA = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -284,23 +284,23 @@ public class VGADAO implements DAOInterface<vga> {
 	}
 
 	@Override
-	public ArrayList<vga> selectAll() {
-		ArrayList<vga> v = new ArrayList<>();
+	public ArrayList<VGA> selectAll() {
+		ArrayList<VGA> v = new ArrayList<>();
 
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "SELECT * FROM vga;";
+			String sql = "SELECT * FROM VGA;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				vga vga = new vga(rs.getString("idsanpham"), rs.getString("idvga"), rs.getString("tenvga"),
-						rs.getString("hangvga"), rs.getString("bonho"), rs.getInt("tonkho"), rs.getDouble("dongia"),
+				VGA VGA = new VGA(rs.getString("idsanpham"), rs.getString("idVGA"), rs.getString("tenVGA"),
+						rs.getString("hangVGA"), rs.getString("bonho"), rs.getInt("tonkho"), rs.getDouble("dongia"),
 						rs.getString("baohanh"), rs.getBlob("img"));
-				v.add(vga);
+				v.add(VGA);
 			}
 			JDBCUntil.closeConnection(con);
 		} catch (SQLException e) {
@@ -309,22 +309,22 @@ public class VGADAO implements DAOInterface<vga> {
 		return v;
 	}
 
-	public ArrayList<vga> selectNhapHang() {
-		ArrayList<vga> v = new ArrayList<>();
+	public ArrayList<VGA> selectNhapHang() {
+		ArrayList<VGA> v = new ArrayList<>();
 
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "SELECT * FROM vga;";
+			String sql = "SELECT * FROM VGA;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				vga vga = new vga(rs.getString("idsanpham"), rs.getString("idvga"), rs.getString("tenvga"),
+				VGA VGA = new VGA(rs.getString("idsanpham"), rs.getString("idVGA"), rs.getString("tenVGA"),
 						rs.getDouble("dongia"), rs.getString("baohanh"));
-				v.add(vga);
+				v.add(VGA);
 			}
 			JDBCUntil.closeConnection(con);
 		} catch (SQLException e) {
@@ -334,13 +334,13 @@ public class VGADAO implements DAOInterface<vga> {
 	}
 
 	@Override
-	public vga selectById(String t) {
-		vga v = null;
+	public VGA selectById(String t) {
+		VGA v = null;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "SELECT * FROM vga where idvga = ?;";
+			String sql = "SELECT * FROM VGA where idVGA = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -349,8 +349,8 @@ public class VGADAO implements DAOInterface<vga> {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				v = new vga(rs.getString("idsanpham"), rs.getString("idvga"), rs.getString("tenvga"),
-						rs.getString("hangvga"), rs.getString("bonho"), rs.getInt("tonkho"), rs.getDouble("dongia"),
+				v = new VGA(rs.getString("idsanpham"), rs.getString("idVGA"), rs.getString("tenVGA"),
+						rs.getString("hangVGA"), rs.getString("bonho"), rs.getInt("tonkho"), rs.getDouble("dongia"),
 						rs.getString("baohanh"), rs.getBlob("img"));
 			}
 
@@ -365,7 +365,7 @@ public class VGADAO implements DAOInterface<vga> {
 	
 	public static int tongTonKho() {
 		int tonkho = 0;
-		String sql = "SELECT SUM(vga.tonkho) AS total\r\n" + "FROM vga";
+		String sql = "SELECT SUM(VGA.tonkho) AS total\r\n" + "FROM VGA";
 		try {
 			Connection con = JDBCUntil.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);

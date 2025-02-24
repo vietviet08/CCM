@@ -2,8 +2,8 @@ package com.ccm.controller;
 
 import java.util.ArrayList;
 
-import dao.KhachHangDAO;
-import model.KhachHang;
+import com.ccm.dao.KhachHangDAO;
+import com.ccm.model.KhachHang;
 
 public class TimKiemKhachHang {
 	public static ArrayList<KhachHang> byALL(String key){

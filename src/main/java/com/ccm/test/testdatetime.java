@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import controller.ConvertDate;
+import com.ccm.controller.ConvertDate;
 
 public class testdatetime {
 	public static void main(String[] args) throws InterruptedException {

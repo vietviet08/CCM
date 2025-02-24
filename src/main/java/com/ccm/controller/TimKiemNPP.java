@@ -2,8 +2,8 @@ package com.ccm.controller;
 
 import java.util.ArrayList;
 
-import dao.NhaPhanPhoiDAO;
-import model.NhaPhanPhoi;
+import com.ccm.dao.NhaPhanPhoiDAO;
+import com.ccm.model.NhaPhanPhoi;
 
 public class TimKiemNPP {
 	public static ArrayList<NhaPhanPhoi> all(String key) {

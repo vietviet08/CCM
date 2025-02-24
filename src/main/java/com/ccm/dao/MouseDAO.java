@@ -2,39 +2,39 @@ package com.ccm.dao;
 
 import java.util.ArrayList;
 
-import model.mouse;
+import com.ccm.model.Mouse;
 
-public class MouseDAO implements DAOInterface<mouse>{
+public class MouseDAO implements DAOInterface<Mouse>{
 	public static MouseDAO getInstance() {
 		return new MouseDAO();
 	}
 
 	@Override
-	public int insert(mouse t) {
+	public int insert(Mouse t) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int update(mouse t) {
+	public int update(Mouse t) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int delete(mouse t) {
+	public int delete(Mouse t) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public ArrayList<mouse> selectAll() {
+	public ArrayList<Mouse> selectAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public mouse selectById(String t) {
+	public Mouse selectById(String t) {
 		// TODO Auto-generated method stub
 		return null;
 	}

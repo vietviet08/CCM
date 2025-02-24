@@ -44,7 +44,7 @@ public class IEExcel {
 				}
 				FileOutputStream out = new FileOutputStream(new File(saveFile.toString()));
 				wb.write(out);
-				wb.close();
+//				wb.close();
 				out.close();
 				openFile(saveFile.toString());
 			}

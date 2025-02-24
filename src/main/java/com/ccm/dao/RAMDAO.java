@@ -12,26 +12,26 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import db.JDBCUntil;
-import model.ChiTietPhieu;
-import model.ram;
-import view.CapNhatRAM;
-import view.ThemRAM;
+import com.ccm.db.JDBCUntil;
+import com.ccm.model.ChiTietPhieu;
+import com.ccm.model.RAM;
+import com.ccm.view.CapNhatRAM;
+import com.ccm.view.ThemRAM;
 
-public class RAMDAO implements DAOInterface<ram> {
+public class RAMDAO implements DAOInterface<RAM> {
 
 	public static RAMDAO getInstance() {
 		return new RAMDAO();
 	}
 
 	@Override
-	public int insert(ram t) {
+	public int insert(RAM t) {
 		int check = 0;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "INSERT INTO ram (idsanpham, idram, tenram, loairam, dungluong, bus, tonkho, dongia, baohanh, img) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "INSERT INTO RAM (idsanpham, idRAM, tenRAM, loaiRAM, dungluong, bus, tonkho, dongia, baohanh, img) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -63,13 +63,13 @@ public class RAMDAO implements DAOInterface<ram> {
 		return check;
 	}
 
-	public int insertIMGURL(ram t, String stringUrl) {
+	public int insertIMGURL(RAM t, String stringUrl) {
 		int check = 0;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "INSERT INTO ram (idsanpham, idram, tenram, loairam, dungluong, bus, tonkho, dongia, baohanh, img) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "INSERT INTO RAM (idsanpham, idRAM, tenRAM, loaiRAM, dungluong, bus, tonkho, dongia, baohanh, img) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -99,13 +99,13 @@ public class RAMDAO implements DAOInterface<ram> {
 		return check;
 	}
 
-	public int insertNotIMG(ram t) {
+	public int insertNotIMG(RAM t) {
 		int check = 0;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "INSERT INTO ram (idsanpham, idram, tenram, loairam, dungluong, bus, tonkho, dongia, baohanh) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "INSERT INTO RAM (idsanpham, idRAM, tenRAM, loaiRAM, dungluong, bus, tonkho, dongia, baohanh) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -131,13 +131,13 @@ public class RAMDAO implements DAOInterface<ram> {
 	}
 
 	@Override
-	public int update(ram t) {
+	public int update(RAM t) {
 		int check = 0;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "UPDATE ram SET idsanpham = ?, tenram = ?, loairam = ?, dungluong = ?, bus = ?, tonkho = ?, dongia = ?, baohanh = ?, img = ? WHERE idram = ?;";
+			String sql = "UPDATE RAM SET idsanpham = ?, tenRAM = ?, loaiRAM = ?, dungluong = ?, bus = ?, tonkho = ?, dongia = ?, baohanh = ?, img = ? WHERE idRAM = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -170,13 +170,13 @@ public class RAMDAO implements DAOInterface<ram> {
 		return check;
 	}
 
-	public int updateIMGURL(ram t, String stringUrl) {
+	public int updateIMGURL(RAM t, String stringUrl) {
 		int check = 0;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "UPDATE ram SET idsanpham = ?, tenram = ?, loairam = ?, dungluong = ?, bus = ?, tonkho = ?, dongia = ?, baohanh = ?, img = ? WHERE idram = ?;";
+			String sql = "UPDATE RAM SET idsanpham = ?, tenRAM = ?, loaiRAM = ?, dungluong = ?, bus = ?, tonkho = ?, dongia = ?, baohanh = ?, img = ? WHERE idRAM = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -207,13 +207,13 @@ public class RAMDAO implements DAOInterface<ram> {
 		return check;
 	}
 
-	public int updateNotIMG(ram t) {
+	public int updateNotIMG(RAM t) {
 		int check = 0;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "UPDATE ram SET idsanpham = ?, tenram = ?, loairam = ?, dungluong = ?, bus = ?, tonkho = ?, dongia = ? WHERE idram = ?;";
+			String sql = "UPDATE RAM SET idsanpham = ?, tenRAM = ?, loaiRAM = ?, dungluong = ?, bus = ?, tonkho = ?, dongia = ? WHERE idRAM = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -243,9 +243,9 @@ public class RAMDAO implements DAOInterface<ram> {
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "UPDATE ram SET tonkho = tonkho + ? WHERE idram = ? ;";
+			String sql = "UPDATE RAM SET tonkho = tonkho + ? WHERE idRAM = ? ;";
 			if (nhapHang == false)
-				sql = "UPDATE ram SET tonkho = tonkho - ? WHERE idram = ? ;";
+				sql = "UPDATE RAM SET tonkho = tonkho - ? WHERE idRAM = ? ;";
 
 			for (ChiTietPhieu productNhap : pn) {
 				if (productNhap.getIdRieng().contains("r")) {
@@ -266,13 +266,13 @@ public class RAMDAO implements DAOInterface<ram> {
 	}
 
 	@Override
-	public int delete(ram t) {
+	public int delete(RAM t) {
 		int check = 0;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "DELETE FORM ram WHERE idram = ?;";
+			String sql = "DELETE FORM RAM WHERE idRAM = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -290,23 +290,23 @@ public class RAMDAO implements DAOInterface<ram> {
 	}
 
 	@Override
-	public ArrayList<ram> selectAll() {
-		ArrayList<ram> r = new ArrayList<ram>();
+	public ArrayList<RAM> selectAll() {
+		ArrayList<RAM> r = new ArrayList<RAM>();
 
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "SELECT * FROM ram;";
+			String sql = "SELECT * FROM RAM;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				ram ram = new ram(rs.getString("idsanpham"), rs.getString("idram"), rs.getString("tenram"),
-						rs.getString("loairam"), rs.getString("dungluong"), rs.getString("bus"), rs.getInt("tonkho"),
+				RAM RAM = new RAM(rs.getString("idsanpham"), rs.getString("idRAM"), rs.getString("tenRAM"),
+						rs.getString("loaiRAM"), rs.getString("dungluong"), rs.getString("bus"), rs.getInt("tonkho"),
 						rs.getDouble("dongia"), rs.getString("baohanh"), rs.getBlob("img"));
-				r.add(ram);
+				r.add(RAM);
 			}
 
 			JDBCUntil.closeConnection(con);
@@ -318,22 +318,22 @@ public class RAMDAO implements DAOInterface<ram> {
 		return r;
 	}
 
-	public ArrayList<ram> selectNhapHang() {
-		ArrayList<ram> list = new ArrayList<ram>();
+	public ArrayList<RAM> selectNhapHang() {
+		ArrayList<RAM> list = new ArrayList<RAM>();
 
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "SELECT * FROM ram;";
+			String sql = "SELECT * FROM RAM;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				ram ram = new ram(rs.getString("idsanpham"), rs.getString("idram"), rs.getString("tenram"),
+				RAM RAM = new RAM(rs.getString("idsanpham"), rs.getString("idRAM"), rs.getString("tenRAM"),
 						rs.getDouble("dongia"), rs.getString("baohanh"));
-				list.add(ram);
+				list.add(RAM);
 			}
 
 			JDBCUntil.closeConnection(con);
@@ -346,13 +346,13 @@ public class RAMDAO implements DAOInterface<ram> {
 	}
 
 	@Override
-	public ram selectById(String t) {
-		ram r = null;
+	public RAM selectById(String t) {
+		RAM r = null;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "SELECT * FROM ram WHERE idram = ?;";
+			String sql = "SELECT * FROM RAM WHERE idRAM = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -361,8 +361,8 @@ public class RAMDAO implements DAOInterface<ram> {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				r = new ram(rs.getString("idsanpham"), rs.getString("idram"), rs.getString("tenram"),
-						rs.getString("loairam"), rs.getString("dungluong"), rs.getString("bus"), rs.getInt("tonkho"),
+				r = new RAM(rs.getString("idsanpham"), rs.getString("idRAM"), rs.getString("tenRAM"),
+						rs.getString("loaiRAM"), rs.getString("dungluong"), rs.getString("bus"), rs.getInt("tonkho"),
 						rs.getDouble("dongia"), rs.getString("baohanh"), rs.getBlob("img"));
 			}
 
@@ -377,7 +377,7 @@ public class RAMDAO implements DAOInterface<ram> {
 
 	public static int tongTonKho() {
 		int tonkho = 0;
-		String sql = "SELECT SUM(ram.tonkho) AS total\r\n" + "FROM ram";
+		String sql = "SELECT SUM(RAM.tonkho) AS total\r\n" + "FROM RAM";
 		try {
 			Connection con = JDBCUntil.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);

@@ -7,7 +7,7 @@ import java.awt.RenderingHints;
 
 import javax.swing.JButton;
 
-import color.SetColor;
+import com.ccm.color.SetColor;
 
 public class ButtonRound extends JButton {
 

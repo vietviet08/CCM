@@ -10,24 +10,24 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import db.JDBCUntil;
-import model.ChiTietPhieu;
-import model.hdd;
-import view.CapNhatHDD;
-import view.ThemHDD;
+import com.ccm.db.JDBCUntil;
+import com.ccm.model.ChiTietPhieu;
+import com.ccm.model.HDD;
+import com.ccm.view.CapNhatHDD;
+import com.ccm.view.ThemHDD;
 
-public class HDDDAO implements DAOInterface<hdd> {
+public class HDDDAO implements DAOInterface<HDD> {
 	public static HDDDAO getInstance() {
 		return new HDDDAO();
 	}
 
 	@Override
-	public int insert(hdd t) {
+	public int insert(HDD t) {
 		int check = 0;
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "insert into hdd (idsanpham, idhdd, tenhdd, hang, dungluong, bonhodem, tocdovongquay, tonkho, dongia, baohanh, img) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "insert into HDD (idsanpham, idHDD, tenHDD, hang, dungluong, bonhodem, tocdovongquay, tonkho, dongia, baohanh, img) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ps.setString(1, t.getIdSanPham());
@@ -53,12 +53,12 @@ public class HDDDAO implements DAOInterface<hdd> {
 		return check;
 	}
 
-	public int insertIMGURL(hdd t, String stringUrl) {
+	public int insertIMGURL(HDD t, String stringUrl) {
 		int check = 0;
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "insert into hdd (idsanpham, idhdd, tenhdd, hang, dungluong, bonhodem, tocdovongquay, tonkho, dongia, baohanh, img) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "insert into HDD (idsanpham, idHDD, tenHDD, hang, dungluong, bonhodem, tocdovongquay, tonkho, dongia, baohanh, img) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ps.setString(1, t.getIdSanPham());
@@ -87,12 +87,12 @@ public class HDDDAO implements DAOInterface<hdd> {
 		return check;
 	}
 
-	public int insertNotIMG(hdd t) {
+	public int insertNotIMG(HDD t) {
 		int check = 0;
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "insert into hdd (idsanpham, idhdd, tenhdd, hang, dungluong, bonhodem, tocdovongquay, tonkho, dongia, baohanh) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "insert into HDD (idsanpham, idHDD, tenHDD, hang, dungluong, bonhodem, tocdovongquay, tonkho, dongia, baohanh) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ps.setString(1, t.getIdSanPham());
@@ -117,12 +117,12 @@ public class HDDDAO implements DAOInterface<hdd> {
 	}
 
 	@Override
-	public int update(hdd t) {
+	public int update(HDD t) {
 		int check = 0;
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "update hdd set idsanpham = ?, tenhdd = ?, hang = ?, dungluong = ?, bonhodem = ?, tocdovongquay = ?, tonkho = ?, dongia = ?, baohanh = ?, img = ? where idhdd = ?";
+			String sql = "update HDD set idsanpham = ?, tenHDD = ?, hang = ?, dungluong = ?, bonhodem = ?, tocdovongquay = ?, tonkho = ?, dongia = ?, baohanh = ?, img = ? where idHDD = ?";
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ps.setString(1, t.getIdSanPham());
@@ -149,13 +149,13 @@ public class HDDDAO implements DAOInterface<hdd> {
 		return check;
 	}
 
-	public int updateIMGURL(hdd t, String stringUrl) {
+	public int updateIMGURL(HDD t, String stringUrl) {
 
 		int check = 0;
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "update hdd set idsanpham = ?, tenhdd = ?, hang = ?, dungluong = ?, bonhodem = ?, tocdovongquay = ?, tonkho = ?, dongia = ?, baohanh = ?, img = ? where idhdd = ?";
+			String sql = "update HDD set idsanpham = ?, tenHDD = ?, hang = ?, dungluong = ?, bonhodem = ?, tocdovongquay = ?, tonkho = ?, dongia = ?, baohanh = ?, img = ? where idHDD = ?";
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ps.setString(1, t.getIdSanPham());
@@ -185,12 +185,12 @@ public class HDDDAO implements DAOInterface<hdd> {
 		return check;
 	}
 
-	public int updateNotIMG(hdd t) {
+	public int updateNotIMG(HDD t) {
 		int check = 0;
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "update hdd set idsanpham = ?, tenhdd = ?, hang = ?, dungluong = ?, bonhodem = ?, tocdovongquay = ?, tonkho = ?, dongia = ?, baohanh = ? where idhdd = ?";
+			String sql = "update HDD set idsanpham = ?, tenHDD = ?, hang = ?, dungluong = ?, bonhodem = ?, tocdovongquay = ?, tonkho = ?, dongia = ?, baohanh = ? where idHDD = ?";
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ps.setString(1, t.getIdSanPham());
@@ -220,12 +220,12 @@ public class HDDDAO implements DAOInterface<hdd> {
 
 		try {
 			Connection con = JDBCUntil.getConnection();
-			String sql = "UPDATE hdd SET  tonkho = tonkho + ? WHERE idhdd = ?;";
+			String sql = "UPDATE HDD SET  tonkho = tonkho + ? WHERE idHDD = ?;";
 			if (nhapHang == false)
-				sql = "UPDATE hdd SET  tonkho = tonkho - ? WHERE idhdd = ?;";
+				sql = "UPDATE HDD SET  tonkho = tonkho - ? WHERE idHDD = ?;";
 			for (ChiTietPhieu productNhap : pn) {
 
-				if (productNhap.getIdRieng().contains("hdd")) {
+				if (productNhap.getIdRieng().contains("HDD")) {
 
 					PreparedStatement ps = con.prepareStatement(sql);
 					ps.setInt(1, productNhap.getSoLuong());
@@ -244,12 +244,12 @@ public class HDDDAO implements DAOInterface<hdd> {
 	}
 
 	@Override
-	public int delete(hdd t) {
+	public int delete(HDD t) {
 		int check = 0;
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "delete from hdd where idhdd = ?";
+			String sql = "delete from HDD where idHDD = ?";
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ps.setString(1, t.getIdhHdd());
@@ -265,23 +265,23 @@ public class HDDDAO implements DAOInterface<hdd> {
 	}
 
 	@Override
-	public ArrayList<hdd> selectAll() {
-		ArrayList<hdd> list = new ArrayList<hdd>();
+	public ArrayList<HDD> selectAll() {
+		ArrayList<HDD> list = new ArrayList<HDD>();
 
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "select * from hdd";
+			String sql = "select * from HDD";
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ResultSet rs = ps.executeQuery();
-//			idsanpham, idhdd, tenhdd, hang, dungluong, bonhodem, tocdovongquay, tonkho, dongia, baohanh, img
+//			idsanpham, idHDD, tenHDD, hang, dungluong, bonhodem, tocdovongquay, tonkho, dongia, baohanh, img
 			while (rs.next()) {
-				hdd hdd = new hdd(rs.getString("idsanpham"), rs.getString("idhdd"), rs.getString("tenhdd"),
+				HDD HDD = new HDD(rs.getString("idsanpham"), rs.getString("idHDD"), rs.getString("tenHDD"),
 						rs.getString("hang"), rs.getString("dungluong"), rs.getString("bonhodem"),
 						rs.getString("tocdovongquay"), rs.getInt("tonkho"), rs.getDouble("dongia"),
 						rs.getString("baohanh"), rs.getBlob("img"));
-				list.add(hdd);
+				list.add(HDD);
 			}
 
 			JDBCUntil.closeConnection(con);
@@ -294,21 +294,21 @@ public class HDDDAO implements DAOInterface<hdd> {
 	}
 
 	@Override
-	public hdd selectById(String t) {
-		hdd hdd = null;
+	public HDD selectById(String t) {
+		HDD HDD = null;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "select * from hdd where idhdd = ?";
+			String sql = "select * from HDD where idHDD = ?";
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ps.setString(1, t);
 
 			ResultSet rs = ps.executeQuery();
-//			idsanpham, idhdd, tenhdd, hang, dungluong, bonhodem, tocdovongquay, tonkho, dongia, baohanh, img
+//			idsanpham, idHDD, tenHDD, hang, dungluong, bonhodem, tocdovongquay, tonkho, dongia, baohanh, img
 			while (rs.next()) {
-				hdd = new hdd(rs.getString("idsanpham"), rs.getString("idhdd"), rs.getString("tenhdd"),
+				HDD = new HDD(rs.getString("idsanpham"), rs.getString("idHDD"), rs.getString("tenHDD"),
 						rs.getString("hang"), rs.getString("dungluong"), rs.getString("bonhodem"),
 						rs.getString("tocdovongquay"), rs.getInt("tonkho"), rs.getDouble("dongia"),
 						rs.getString("baohanh"), rs.getBlob("img"));
@@ -320,12 +320,12 @@ public class HDDDAO implements DAOInterface<hdd> {
 			System.out.println(e);
 		}
 
-		return hdd;
+		return HDD;
 	}
 	
 	public static int tongTonKho() {
 		int tonkho = 0;
-		String sql = "SELECT SUM(hdd.tonkho) AS total\r\n" + "FROM hdd";
+		String sql = "SELECT SUM(HDD.tonkho) AS total\r\n" + "FROM HDD";
 		try {
 			Connection con = JDBCUntil.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);

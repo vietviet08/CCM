@@ -2,7 +2,7 @@ package com.ccm.controller;
 
 import java.util.ArrayList;
 
-import model.ChiTietPhieu;
+import com.ccm.model.ChiTietPhieu;
 
 public class LuuTam {
 

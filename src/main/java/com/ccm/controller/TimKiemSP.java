@@ -2,8 +2,8 @@ package com.ccm.controller;
 
 import java.util.ArrayList;
 
-import dao.SanPhamDAO;
-import model.Products;
+import com.ccm.dao.SanPhamDAO;
+import com.ccm.model.Products;
 
 public class TimKiemSP {
 	public static ArrayList<Products> byID(String key) {

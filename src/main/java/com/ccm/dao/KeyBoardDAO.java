@@ -2,39 +2,39 @@ package com.ccm.dao;
 
 import java.util.ArrayList;
 
-import model.keyboard;
+import com.ccm.model.KeyBoard;
 
-public class KeyBoardDAO implements DAOInterface<keyboard>{
+public class KeyBoardDAO implements DAOInterface<KeyBoard>{
 	public static KeyBoardDAO getInstance() {
 		return new KeyBoardDAO();
 	}
 
 	@Override
-	public int insert(keyboard t) {
+	public int insert(KeyBoard t) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int update(keyboard t) {
+	public int update(KeyBoard t) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int delete(keyboard t) {
+	public int delete(KeyBoard t) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public ArrayList<keyboard> selectAll() {
+	public ArrayList<KeyBoard> selectAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public keyboard selectById(String t) {
+	public KeyBoard selectById(String t) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -12,26 +12,26 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import db.JDBCUntil;
-import model.ChiTietPhieu;
-import model.cpu;
-import view.CapNhatCPU;
-import view.ThemCPU;
+import com.ccm.db.JDBCUntil;
+import com.ccm.model.CPU;
+import com.ccm.model.ChiTietPhieu;
+import com.ccm.view.CapNhatCPU;
+import com.ccm.view.ThemCPU;
 
-public class CPUDAO implements DAOInterface<cpu> {
+public class CPUDAO implements DAOInterface<CPU> {
 
 	public static CPUDAO getInstance() {
 		return new CPUDAO();
 	}
 
 	@Override
-	public int insert(cpu t) {
+	public int insert(CPU t) {
 		int check = 0;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "INSERT INTO cpu (idsanpham, idcpu, tencpu, xungnhip, sonhan, soluong, diennangtieuthu, bonhodem, tonkho, dongia, baohanh, img) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "INSERT INTO CPU (idsanpham, idCPU, tenCPU, xungnhip, sonhan, soluong, diennangtieuthu, bonhodem, tonkho, dongia, baohanh, img) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -66,13 +66,13 @@ public class CPUDAO implements DAOInterface<cpu> {
 	}
 
 	@SuppressWarnings("deprecation")
-	public int insertIMGURL(cpu t, String stringUrl) {
+	public int insertIMGURL(CPU t, String stringUrl) {
 		int check = 0;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "INSERT INTO cpu (idsanpham, idcpu, tencpu, xungnhip, sonhan, soluong, diennangtieuthu, bonhodem, tonkho, dongia, baohanh, img) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "INSERT INTO CPU (idsanpham, idCPU, tenCPU, xungnhip, sonhan, soluong, diennangtieuthu, bonhodem, tonkho, dongia, baohanh, img) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -105,13 +105,13 @@ public class CPUDAO implements DAOInterface<cpu> {
 		return check;
 	}
 
-	public int insertNotIMG(cpu t) {
+	public int insertNotIMG(CPU t) {
 		int check = 0;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "INSERT INTO cpu (idsanpham, idcpu, tencpu, xungnhip, sonhan, soluong, diennangtieuthu, bonhodem,tonkho, dongia, baohanh) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "INSERT INTO CPU (idsanpham, idCPU, tenCPU, xungnhip, sonhan, soluong, diennangtieuthu, bonhodem,tonkho, dongia, baohanh) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -139,13 +139,13 @@ public class CPUDAO implements DAOInterface<cpu> {
 	}
 
 	@Override
-	public int update(cpu t) {
+	public int update(CPU t) {
 		int check = 0;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "UPDATE cpu SET idsanpham = ?, tencpu = ?, xungnhip = ?, sonhan = ?, soluong = ?, diennangtieuthu = ?, bonhodem = ?, dongia = ?, baohanh = ?, img = ? WHERE idcpu = ?;";
+			String sql = "UPDATE CPU SET idsanpham = ?, tenCPU = ?, xungnhip = ?, sonhan = ?, soluong = ?, diennangtieuthu = ?, bonhodem = ?, dongia = ?, baohanh = ?, img = ? WHERE idCPU = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, t.getIdSanPham());
@@ -177,13 +177,13 @@ public class CPUDAO implements DAOInterface<cpu> {
 		return check;
 	}
 
-	public int updateIMGURL(cpu t, String stringUrl) {
+	public int updateIMGURL(CPU t, String stringUrl) {
 		int check = 0;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "UPDATE cpu SET idsanpham = ?, tencpu = ?, xungnhip = ?, sonhan = ?, soluong = ?, diennangtieuthu = ?, bonhodem = ?, dongia = ?, baohanh = ?, img = ? WHERE idcpu = ?;";
+			String sql = "UPDATE CPU SET idsanpham = ?, tenCPU = ?, xungnhip = ?, sonhan = ?, soluong = ?, diennangtieuthu = ?, bonhodem = ?, dongia = ?, baohanh = ?, img = ? WHERE idCPU = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, t.getIdSanPham());
@@ -214,13 +214,13 @@ public class CPUDAO implements DAOInterface<cpu> {
 		return check;
 	}
 
-	public int updateNotIMG(cpu t) {
+	public int updateNotIMG(CPU t) {
 		int check = 0;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "UPDATE cpu SET idsanpham = ?, tencpu = ?, xungnhip = ?, sonhan = ?, soluong = ?, diennangtieuthu = ?, bonhodem = ?, dongia = ?, baohanh = ? WHERE idcpu = ?;";
+			String sql = "UPDATE CPU SET idsanpham = ?, tenCPU = ?, xungnhip = ?, sonhan = ?, soluong = ?, diennangtieuthu = ?, bonhodem = ?, dongia = ?, baohanh = ? WHERE idCPU = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, t.getIdSanPham());
@@ -254,13 +254,13 @@ public class CPUDAO implements DAOInterface<cpu> {
 			Connection con = JDBCUntil.getConnection();
 			String sql = "";
 			if (nhapHang) {
-				sql = "UPDATE cpu SET  tonkho = tonkho + ? WHERE idcpu = ?;";
+				sql = "UPDATE CPU SET  tonkho = tonkho + ? WHERE idCPU = ?;";
 
 			} else
-				sql = "UPDATE cpu SET  tonkho = tonkho - ? WHERE idcpu = ?;";
+				sql = "UPDATE CPU SET  tonkho = tonkho - ? WHERE idCPU = ?;";
 			for (ChiTietPhieu productNhap : pn) {
 
-				if (productNhap.getIdRieng().contains("cpu")) {
+				if (productNhap.getIdRieng().contains("CPU")) {
 
 					PreparedStatement ps = con.prepareStatement(sql);
 					ps.setInt(1, productNhap.getSoLuong());
@@ -279,13 +279,13 @@ public class CPUDAO implements DAOInterface<cpu> {
 	}
 
 	@Override
-	public int delete(cpu t) {
+	public int delete(CPU t) {
 		int check = 0;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "DELETE FROM cpu WHERE idcpu = ?;";
+			String sql = "DELETE FROM CPU WHERE idCPU = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -302,19 +302,19 @@ public class CPUDAO implements DAOInterface<cpu> {
 	}
 
 	@Override
-	public ArrayList<cpu> selectAll() {
-		ArrayList<cpu> c = new ArrayList<cpu>();
+	public ArrayList<CPU> selectAll() {
+		ArrayList<CPU> c = new ArrayList<CPU>();
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "SELECT * FROM cpu;";
+			String sql = "SELECT * FROM CPU;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				cpu chip = new cpu(rs.getString("idsanpham"), rs.getString("idcpu"), rs.getString("tencpu"),
+				CPU chip = new CPU(rs.getString("idsanpham"), rs.getString("idCPU"), rs.getString("tenCPU"),
 						rs.getString("xungnhip"), rs.getInt("sonhan"), rs.getInt("soluong"),
 						rs.getString("diennangtieuthu"), rs.getString("bonhodem"), rs.getInt("tonkho"),
 						rs.getDouble("dongia"), rs.getString("baohanh"), rs.getBlob("img"));
@@ -327,19 +327,19 @@ public class CPUDAO implements DAOInterface<cpu> {
 		return c;
 	}
 
-	public ArrayList<cpu> selectNhapHang() {
-		ArrayList<cpu> c = new ArrayList<cpu>();
+	public ArrayList<CPU> selectNhapHang() {
+		ArrayList<CPU> c = new ArrayList<CPU>();
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "SELECT * FROM cpu;";
+			String sql = "SELECT * FROM CPU;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				cpu chip = new cpu(rs.getString("idsanpham"), rs.getString("idcpu"), rs.getString("tencpu"),
+				CPU chip = new CPU(rs.getString("idsanpham"), rs.getString("idCPU"), rs.getString("tenCPU"),
 						rs.getDouble("dongia"), rs.getString("baohanh"));
 				c.add(chip);
 			}
@@ -351,13 +351,13 @@ public class CPUDAO implements DAOInterface<cpu> {
 	}
 
 	@Override
-	public cpu selectById(String t) {
-		cpu c = null;
+	public CPU selectById(String t) {
+		CPU c = null;
 
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "SELECT * FROM cpu WHERE idcpu = ?;";
+			String sql = "SELECT * FROM CPU WHERE idCPU = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -366,7 +366,7 @@ public class CPUDAO implements DAOInterface<cpu> {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				c = new cpu(rs.getString("idsanpham"), rs.getString("idcpu"), rs.getString("tencpu"),
+				c = new CPU(rs.getString("idsanpham"), rs.getString("idCPU"), rs.getString("tenCPU"),
 						rs.getString("xungnhip"), rs.getInt("sonhan"), rs.getInt("soluong"),
 						rs.getString("diennangtieuthu"), rs.getString("bonhodem"), rs.getInt("tonkho"),
 						rs.getDouble("dongia"), rs.getString("baohanh"), rs.getBlob("img"));
@@ -379,12 +379,12 @@ public class CPUDAO implements DAOInterface<cpu> {
 		return c;
 	}
 
-	public ArrayList<cpu> selectByIdSanPham(String t) {
-		ArrayList<cpu> list = new ArrayList<cpu>();
+	public ArrayList<CPU> selectByIdSanPham(String t) {
+		ArrayList<CPU> list = new ArrayList<CPU>();
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "SELECT * FROM cpu WHERE idsanpham = ?;";
+			String sql = "SELECT * FROM CPU WHERE idsanpham = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -393,7 +393,7 @@ public class CPUDAO implements DAOInterface<cpu> {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				cpu c = new cpu(rs.getString("idsanpham"), rs.getString("idcpu"), rs.getString("tencpu"),
+				CPU c = new CPU(rs.getString("idsanpham"), rs.getString("idCPU"), rs.getString("tenCPU"),
 						rs.getString("xungnhip"), rs.getInt("sonhan"), rs.getInt("soluong"),
 						rs.getString("diennangtieuthu"), rs.getString("bonhodem"), rs.getInt("tonkho"),
 						rs.getDouble("dongia"), rs.getString("baohanh"), rs.getBlob("img"));
@@ -409,7 +409,7 @@ public class CPUDAO implements DAOInterface<cpu> {
 
 	public static int tongTonKho() {
 		int tonkho = 0;
-		String sql = "SELECT SUM(cpu.tonkho) AS total\r\n" + "FROM cpu";
+		String sql = "SELECT SUM(CPU.tonkho) AS total\r\n" + "FROM CPU";
 		try {
 			Connection con = JDBCUntil.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);

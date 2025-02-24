@@ -4,7 +4,7 @@ import java.awt.Color;
 
 import javax.swing.JButton;
 
-import color.SetColor;
+import com.ccm.color.SetColor;
 
 public class HoverButton {
 

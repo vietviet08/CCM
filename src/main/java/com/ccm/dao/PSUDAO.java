@@ -12,24 +12,24 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import db.JDBCUntil;
-import model.ChiTietPhieu;
-import model.psu;
-import view.CapNhatPSU;
-import view.ThemPSU;
+import com.ccm.db.JDBCUntil;
+import com.ccm.model.ChiTietPhieu;
+import com.ccm.model.PSU;
+import com.ccm.view.CapNhatPSU;
+import com.ccm.view.ThemPSU;
 
-public class PSUDAO implements DAOInterface<psu> {
+public class PSUDAO implements DAOInterface<PSU> {
 	public static PSUDAO getInstance() {
 		return new PSUDAO();
 	}
 
 	@Override
-	public int insert(psu t) {
+	public int insert(PSU t) {
 		int check = 0;
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "insert into psu (idsanpham, idnguon, tennguon, hang, congsuat, chuannguon, kieuday, kichthuoc, tonkho, gia, baohanh, img) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "insert into PSU (idsanpham, idnguon, tennguon, hang, congsuat, chuannguon, kieuday, kichthuoc, tonkho, gia, baohanh, img) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, t.getIdSanPham());
@@ -59,12 +59,12 @@ public class PSUDAO implements DAOInterface<psu> {
 		return check;
 	}
 
-	public int insertIMGURL(psu t, String stringUrl) {
+	public int insertIMGURL(PSU t, String stringUrl) {
 		int check = 0;
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "insert into psu (idsanpham, idnguon, tennguon, hang, congsuat, chuannguon, kieuday, kichthuoc, tonkho, gia, baohanh, img) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "insert into PSU (idsanpham, idnguon, tennguon, hang, congsuat, chuannguon, kieuday, kichthuoc, tonkho, gia, baohanh, img) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, t.getIdSanPham());
@@ -92,12 +92,12 @@ public class PSUDAO implements DAOInterface<psu> {
 		return check;
 	}
 
-	public int insertNotIMG(psu t) {
+	public int insertNotIMG(PSU t) {
 		int check = 0;
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "insert into psu (idsanpham, idnguon, tennguon, hang, congsuat, chuannguon, kieuday, kichthuoc, tonkho, gia, baohanh) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "insert into PSU (idsanpham, idnguon, tennguon, hang, congsuat, chuannguon, kieuday, kichthuoc, tonkho, gia, baohanh) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, t.getIdSanPham());
@@ -121,12 +121,12 @@ public class PSUDAO implements DAOInterface<psu> {
 	}
 
 	@Override
-	public int update(psu t) {
+	public int update(PSU t) {
 		int check = 0;
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "update psu set idsanpham = ?, tennguon = ?, hang = ?, congsuat = ?, chuannguon = ?, kieuday = ?, kichthuoc = ?, tonkho = ?, gia = ?, baohanh = ?, img = ? where idnguon = ?;";
+			String sql = "update PSU set idsanpham = ?, tennguon = ?, hang = ?, congsuat = ?, chuannguon = ?, kieuday = ?, kichthuoc = ?, tonkho = ?, gia = ?, baohanh = ?, img = ? where idnguon = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, t.getIdSanPham());
@@ -153,12 +153,12 @@ public class PSUDAO implements DAOInterface<psu> {
 		return check;
 	}
 
-	public int updateIMGURL(psu t, String stringUrl) {
+	public int updateIMGURL(PSU t, String stringUrl) {
 		int check = 0;
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "update psu set idsanpham = ?, tennguon = ?, hang = ?, congsuat = ?, chuannguon = ?, kieuday = ?, kichthuoc = ?, tonkho = ?, gia = ?, baohanh = ?, img = ? where idnguon = ?;";
+			String sql = "update PSU set idsanpham = ?, tennguon = ?, hang = ?, congsuat = ?, chuannguon = ?, kieuday = ?, kichthuoc = ?, tonkho = ?, gia = ?, baohanh = ?, img = ? where idnguon = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, t.getIdSanPham());
@@ -187,12 +187,12 @@ public class PSUDAO implements DAOInterface<psu> {
 		return check;
 	}
 
-	public int updateNotIMG(psu t) {
+	public int updateNotIMG(PSU t) {
 		int check = 0;
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "update psu set idsanpham = ?, tennguon = ?, hang = ?, congsuat = ?, chuannguon = ?, kieuday = ?, kichthuoc = ?, tonkho = ?, gia = ?, baohanh = ? where idnguon = ?;";
+			String sql = "update PSU set idsanpham = ?, tennguon = ?, hang = ?, congsuat = ?, chuannguon = ?, kieuday = ?, kichthuoc = ?, tonkho = ?, gia = ?, baohanh = ? where idnguon = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, t.getIdSanPham());
@@ -220,11 +220,11 @@ public class PSUDAO implements DAOInterface<psu> {
 
 		try {
 			Connection con = JDBCUntil.getConnection();
-			String sql = "UPDATE psu SET tonkho = tonkho + ? WHERE idnguon = ? ;";
+			String sql = "UPDATE PSU SET tonkho = tonkho + ? WHERE idnguon = ? ;";
 			if (nhapHang == false)
-				sql = "UPDATE psu SET tonkho = tonkho - ? WHERE idnguon = ? ;";
+				sql = "UPDATE PSU SET tonkho = tonkho - ? WHERE idnguon = ? ;";
 			for (ChiTietPhieu productNhap : pn) {
-				if (productNhap.getIdRieng().contains("psu")) {
+				if (productNhap.getIdRieng().contains("PSU")) {
 					PreparedStatement ps = con.prepareStatement(sql);
 					ps.setInt(1, productNhap.getSoLuong());
 					ps.setString(2, productNhap.getIdRieng());
@@ -240,12 +240,12 @@ public class PSUDAO implements DAOInterface<psu> {
 	}
 
 	@Override
-	public int delete(psu t) {
+	public int delete(PSU t) {
 		int check = 0;
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "delete from psu where idnguon = ?;";
+			String sql = "delete from PSU where idnguon = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, t.getIdNguon());
@@ -258,23 +258,23 @@ public class PSUDAO implements DAOInterface<psu> {
 	}
 
 	@Override
-	public ArrayList<psu> selectAll() {
-		ArrayList<psu> list = new ArrayList<psu>();
+	public ArrayList<PSU> selectAll() {
+		ArrayList<PSU> list = new ArrayList<PSU>();
 
 		try {
 			Connection con = JDBCUntil.getConnection();
-			String sql = "select * from psu";
+			String sql = "select * from PSU";
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
 //				idsanpham, idnguon, tennguon, hang, congsuat, chuannguon, kieuday, kichthuoc, tonkho, gia, baohanh
-				psu psu = new psu(rs.getString("idsanpham"), rs.getString("idnguon"), rs.getString("tennguon"),
+				PSU PSU = new PSU(rs.getString("idsanpham"), rs.getString("idnguon"), rs.getString("tennguon"),
 						rs.getString("hang"), rs.getString("congsuat"), rs.getString("chuannguon"),
 						rs.getString("kieuday"), rs.getString("kichthuoc"), rs.getInt("tonkho"), rs.getDouble("gia"),
 						rs.getString("baohanh"), rs.getBlob("img"));
-				list.add(psu);
+				list.add(PSU);
 			}
 			JDBCUntil.closeConnection(con);
 		} catch (SQLException e) {
@@ -284,18 +284,18 @@ public class PSUDAO implements DAOInterface<psu> {
 	}
 
 	@Override
-	public psu selectById(String t) {
-		psu psu = null;
+	public PSU selectById(String t) {
+		PSU PSU = null;
 		try {
 			Connection con = JDBCUntil.getConnection();
-			String sql = "select * from psu where idnguon = ?";
+			String sql = "select * from PSU where idnguon = ?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, t);
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
 //				idsanpham, idnguon, tennguon, hang, congsuat, chuannguon, kieuday, kichthuoc, tonkho, gia, baohanh
-				psu = new psu(rs.getString("idsanpham"), rs.getString("idnguon"), rs.getString("tennguon"),
+				PSU = new PSU(rs.getString("idsanpham"), rs.getString("idnguon"), rs.getString("tennguon"),
 						rs.getString("hang"), rs.getString("congsuat"), rs.getString("chuannguon"),
 						rs.getString("kieuday"), rs.getString("kichthuoc"), rs.getInt("tonkho"), rs.getDouble("gia"),
 						rs.getString("baohanh"), rs.getBlob("img"));
@@ -304,12 +304,12 @@ public class PSUDAO implements DAOInterface<psu> {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return psu;
+		return PSU;
 	}
 
 	public static int tongTonKho() {
 		int tonkho = 0;
-		String sql = "SELECT SUM(psu.tonkho) AS total\r\n" + "FROM psu";
+		String sql = "SELECT SUM(PSU.tonkho) AS total\r\n" + "FROM PSU";
 		try {
 			Connection con = JDBCUntil.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);

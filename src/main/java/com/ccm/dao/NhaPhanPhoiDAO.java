@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import db.JDBCUntil;
-import model.NhaPhanPhoi;
+import com.ccm.db.JDBCUntil;
+import com.ccm.model.NhaPhanPhoi;
 
 public class NhaPhanPhoiDAO implements DAOInterface<NhaPhanPhoi> {
 

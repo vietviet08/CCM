@@ -2,109 +2,109 @@ package com.ccm.controller;
 
 import java.util.ArrayList;
 
-import dao.hddDAO;
-import model.hdd;
+import com.ccm.dao.HDDDAO;
+import com.ccm.model.HDD;
 
-public class TimKiemHDD implements TimKiemInterface<hdd> {
+public class TimKiemHDD implements TimKiemInterface<HDD> {
 
 	public static TimKiemHDD getInstance() {
 		return new TimKiemHDD();
 	}
 
 	@Override
-	public ArrayList<hdd> byIDSP(String key) {
-		ArrayList<hdd> list = new ArrayList<hdd>();
-		ArrayList<hdd> hdds = hddDAO.getInstance().selectAll();
-		for (hdd hdd : hdds)
-			if (hdd.getIdSanPham().toLowerCase().contains(key.toLowerCase()))
-				list.add(hdd);
+	public ArrayList<HDD> byIDSP(String key) {
+		ArrayList<HDD> list = new ArrayList<HDD>();
+		ArrayList<HDD> HDDs = HDDDAO.getInstance().selectAll();
+		for (HDD HDD : HDDs)
+			if (HDD.getIdSanPham().toLowerCase().contains(key.toLowerCase()))
+				list.add(HDD);
 		return list;
 	}
 
 	@Override
-	public ArrayList<hdd> byIDRieng(String key) {
-		ArrayList<hdd> list = new ArrayList<hdd>();
-		ArrayList<hdd> hdds = hddDAO.getInstance().selectAll();
-		for (hdd hdd : hdds)
-			if (hdd.getIdhHdd().toLowerCase().contains(key.toLowerCase()))
-				list.add(hdd);
+	public ArrayList<HDD> byIDRieng(String key) {
+		ArrayList<HDD> list = new ArrayList<HDD>();
+		ArrayList<HDD> HDDs = HDDDAO.getInstance().selectAll();
+		for (HDD HDD : HDDs)
+			if (HDD.getIdhHdd().toLowerCase().contains(key.toLowerCase()))
+				list.add(HDD);
 		return list;
 	}
 
 	@Override
-	public ArrayList<hdd> byTen(String key) {
-		ArrayList<hdd> list = new ArrayList<hdd>();
-		ArrayList<hdd> hdds = hddDAO.getInstance().selectAll();
-		for (hdd hdd : hdds)
-			if (hdd.getTenHdd().toLowerCase().contains(key.toLowerCase()))
-				list.add(hdd);
+	public ArrayList<HDD> byTen(String key) {
+		ArrayList<HDD> list = new ArrayList<HDD>();
+		ArrayList<HDD> HDDs = HDDDAO.getInstance().selectAll();
+		for (HDD HDD : HDDs)
+			if (HDD.getTenHdd().toLowerCase().contains(key.toLowerCase()))
+				list.add(HDD);
 		return list;
 	}
 
 	@Override
-	public ArrayList<hdd> byHang(String key) {
-		ArrayList<hdd> list = new ArrayList<hdd>();
-		ArrayList<hdd> hdds = hddDAO.getInstance().selectAll();
-		for (hdd hdd : hdds)
-			if (hdd.getHang().toLowerCase().contains(key.toLowerCase()))
-				list.add(hdd);
+	public ArrayList<HDD> byHang(String key) {
+		ArrayList<HDD> list = new ArrayList<HDD>();
+		ArrayList<HDD> HDDs = HDDDAO.getInstance().selectAll();
+		for (HDD HDD : HDDs)
+			if (HDD.getHang().toLowerCase().contains(key.toLowerCase()))
+				list.add(HDD);
 		return list;
 	}
 
 	@Override
-	public ArrayList<hdd> byTonKho(String key) {
-		ArrayList<hdd> list = new ArrayList<hdd>();
-		ArrayList<hdd> hdds = hddDAO.getInstance().selectAll();
-		for (hdd hdd : hdds)
-			if (String.valueOf(hdd.getTonKho()).toLowerCase().contains(key.toLowerCase()))
-				list.add(hdd);
+	public ArrayList<HDD> byTonKho(String key) {
+		ArrayList<HDD> list = new ArrayList<HDD>();
+		ArrayList<HDD> HDDs = HDDDAO.getInstance().selectAll();
+		for (HDD HDD : HDDs)
+			if (String.valueOf(HDD.getTonKho()).toLowerCase().contains(key.toLowerCase()))
+				list.add(HDD);
 		return list;
 	}
 
 	@Override
-	public ArrayList<hdd> byGia(String key) {
-		ArrayList<hdd> list = new ArrayList<hdd>();
-		ArrayList<hdd> hdds = hddDAO.getInstance().selectAll();
-		for (hdd hdd : hdds)
-			if (String.valueOf(hdd.getGia()).toLowerCase().contains(key.toLowerCase()))
-				list.add(hdd);
+	public ArrayList<HDD> byGia(String key) {
+		ArrayList<HDD> list = new ArrayList<HDD>();
+		ArrayList<HDD> HDDs = HDDDAO.getInstance().selectAll();
+		for (HDD HDD : HDDs)
+			if (String.valueOf(HDD.getGia()).toLowerCase().contains(key.toLowerCase()))
+				list.add(HDD);
 		return list;
 	}
 
 	@Override
-	public ArrayList<hdd> byBaoHanh(String key) {
-		ArrayList<hdd> list = new ArrayList<hdd>();
-		ArrayList<hdd> hdds = hddDAO.getInstance().selectAll();
-		for (hdd hdd : hdds)
-			if (hdd.getBaoHanh().toLowerCase().contains(key.toLowerCase()))
-				list.add(hdd);
+	public ArrayList<HDD> byBaoHanh(String key) {
+		ArrayList<HDD> list = new ArrayList<HDD>();
+		ArrayList<HDD> HDDs = HDDDAO.getInstance().selectAll();
+		for (HDD HDD : HDDs)
+			if (HDD.getBaoHanh().toLowerCase().contains(key.toLowerCase()))
+				list.add(HDD);
 		return list;
 	}
 
-	public ArrayList<hdd> byDungLuong(String key) {
-		ArrayList<hdd> list = new ArrayList<hdd>();
-		ArrayList<hdd> hdds = hddDAO.getInstance().selectAll();
-		for (hdd hdd : hdds)
-			if (hdd.getDungLuong().toLowerCase().contains(key.toLowerCase()))
-				list.add(hdd);
+	public ArrayList<HDD> byDungLuong(String key) {
+		ArrayList<HDD> list = new ArrayList<HDD>();
+		ArrayList<HDD> HDDs = HDDDAO.getInstance().selectAll();
+		for (HDD HDD : HDDs)
+			if (HDD.getDungLuong().toLowerCase().contains(key.toLowerCase()))
+				list.add(HDD);
 		return list;
 	}
 
-	public ArrayList<hdd> byBoNhoDem(String key) {
-		ArrayList<hdd> list = new ArrayList<hdd>();
-		ArrayList<hdd> hdds = hddDAO.getInstance().selectAll();
-		for (hdd hdd : hdds)
-			if (hdd.getBoNhoDem().toLowerCase().contains(key.toLowerCase()))
-				list.add(hdd);
+	public ArrayList<HDD> byBoNhoDem(String key) {
+		ArrayList<HDD> list = new ArrayList<HDD>();
+		ArrayList<HDD> HDDs = HDDDAO.getInstance().selectAll();
+		for (HDD HDD : HDDs)
+			if (HDD.getBoNhoDem().toLowerCase().contains(key.toLowerCase()))
+				list.add(HDD);
 		return list;
 	}
 
-	public ArrayList<hdd> byTocDoVongQuay(String key) {
-		ArrayList<hdd> list = new ArrayList<hdd>();
-		ArrayList<hdd> hdds = hddDAO.getInstance().selectAll();
-		for (hdd hdd : hdds)
-			if (hdd.getTocDoVongQuay().toLowerCase().contains(key.toLowerCase()))
-				list.add(hdd);
+	public ArrayList<HDD> byTocDoVongQuay(String key) {
+		ArrayList<HDD> list = new ArrayList<HDD>();
+		ArrayList<HDD> HDDs = HDDDAO.getInstance().selectAll();
+		for (HDD HDD : HDDs)
+			if (HDD.getTocDoVongQuay().toLowerCase().contains(key.toLowerCase()))
+				list.add(HDD);
 		return list;
 	}
 

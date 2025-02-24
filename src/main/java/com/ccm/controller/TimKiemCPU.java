@@ -2,115 +2,115 @@ package com.ccm.controller;
 
 import java.util.ArrayList;
 
-import dao.cpuDAO;
-import model.cpu;
+import com.ccm.dao.CPUDAO;
+import com.ccm.model.CPU;
 
 public class TimKiemCPU {
-	public static ArrayList<cpu> byID(String key) {
-		ArrayList<cpu> list = new ArrayList<cpu>();
-		ArrayList<cpu> listcpu = cpuDAO.getInstance().selectAll();
-		for (cpu cpu : listcpu) {
-			if (cpu.getIdSanPham().toLowerCase().contains(key.toLowerCase())) {
-				list.add(cpu);
+	public static ArrayList<CPU> byID(String key) {
+		ArrayList<CPU> list = new ArrayList<CPU>();
+		ArrayList<CPU> listCPU = CPUDAO.getInstance().selectAll();
+		for (CPU CPU : listCPU) {
+			if (CPU.getIdSanPham().toLowerCase().contains(key.toLowerCase())) {
+				list.add(CPU);
 			}
 		}
 		return list;
 	}
 	
-	public static ArrayList<cpu> byIDCPU(String key) {
-		ArrayList<cpu> list = new ArrayList<cpu>();
-		ArrayList<cpu> listcpu = cpuDAO.getInstance().selectAll();
-		for (cpu cpu : listcpu) {
-			if (cpu.getIdCpu().toLowerCase().contains(key.toLowerCase())) {
-				list.add(cpu);
+	public static ArrayList<CPU> byIDCPU(String key) {
+		ArrayList<CPU> list = new ArrayList<CPU>();
+		ArrayList<CPU> listCPU = CPUDAO.getInstance().selectAll();
+		for (CPU CPU : listCPU) {
+			if (CPU.getIdCpu().toLowerCase().contains(key.toLowerCase())) {
+				list.add(CPU);
 			}
 		}
 		return list;
 	}	
 
-	public static ArrayList<cpu> byTen(String key) {
-		ArrayList<cpu> list = new ArrayList<cpu>();
-		ArrayList<cpu> listcpu = cpuDAO.getInstance().selectAll();
-		for (cpu cpu : listcpu) {
-			if (cpu.getNameCpu().toLowerCase().contains(key.toLowerCase())) {
-				list.add(cpu);
+	public static ArrayList<CPU> byTen(String key) {
+		ArrayList<CPU> list = new ArrayList<CPU>();
+		ArrayList<CPU> listCPU = CPUDAO.getInstance().selectAll();
+		for (CPU CPU : listCPU) {
+			if (CPU.getNameCpu().toLowerCase().contains(key.toLowerCase())) {
+				list.add(CPU);
 			}
 		}
 		return list;
 	}
 
-	public static ArrayList<cpu> byXungNhip(String key) {
-		ArrayList<cpu> list = new ArrayList<cpu>();
-		ArrayList<cpu> listcpu = cpuDAO.getInstance().selectAll();
-		for (cpu cpu : listcpu) {
-			if (cpu.getXungNhip().toLowerCase().contains(key.toLowerCase())) {
-				list.add(cpu);
+	public static ArrayList<CPU> byXungNhip(String key) {
+		ArrayList<CPU> list = new ArrayList<CPU>();
+		ArrayList<CPU> listCPU = CPUDAO.getInstance().selectAll();
+		for (CPU CPU : listCPU) {
+			if (CPU.getXungNhip().toLowerCase().contains(key.toLowerCase())) {
+				list.add(CPU);
 			}
 		}
 		return list;
 	}
 
-	public static ArrayList<cpu> bySoNhan(String key) {
-		ArrayList<cpu> list = new ArrayList<cpu>();
-		ArrayList<cpu> listcpu = cpuDAO.getInstance().selectAll();
-		for (cpu cpu : listcpu) {
-			if (String.valueOf(cpu.getSoNhan()).contains(key.toLowerCase())) {
-				list.add(cpu);
+	public static ArrayList<CPU> bySoNhan(String key) {
+		ArrayList<CPU> list = new ArrayList<CPU>();
+		ArrayList<CPU> listCPU = CPUDAO.getInstance().selectAll();
+		for (CPU CPU : listCPU) {
+			if (String.valueOf(CPU.getSoNhan()).contains(key.toLowerCase())) {
+				list.add(CPU);
 			}
 		}
 		return list;
 	}
 
-	public static ArrayList<cpu> bySoLuong(String key) {
-		ArrayList<cpu> list = new ArrayList<cpu>();
-		ArrayList<cpu> listcpu = cpuDAO.getInstance().selectAll();
-		for (cpu cpu : listcpu) {
-			if (String.valueOf(cpu.getSoLuong()).contains(key.toLowerCase())) {
-				list.add(cpu);
+	public static ArrayList<CPU> bySoLuong(String key) {
+		ArrayList<CPU> list = new ArrayList<CPU>();
+		ArrayList<CPU> listCPU = CPUDAO.getInstance().selectAll();
+		for (CPU CPU : listCPU) {
+			if (String.valueOf(CPU.getSoLuong()).contains(key.toLowerCase())) {
+				list.add(CPU);
 			}
 		}
 		return list;
 	}
 
-	public static ArrayList<cpu> byDienNang(String key) {
-		ArrayList<cpu> list = new ArrayList<cpu>();
-		ArrayList<cpu> listcpu = cpuDAO.getInstance().selectAll();
-		for (cpu cpu : listcpu) {
-			if (cpu.getDienNangTieuThu().toLowerCase().contains(key.toLowerCase())) {
-				list.add(cpu);
+	public static ArrayList<CPU> byDienNang(String key) {
+		ArrayList<CPU> list = new ArrayList<CPU>();
+		ArrayList<CPU> listCPU = CPUDAO.getInstance().selectAll();
+		for (CPU CPU : listCPU) {
+			if (CPU.getDienNangTieuThu().toLowerCase().contains(key.toLowerCase())) {
+				list.add(CPU);
 			}
 		}
 		return list;
 	}
 
-	public static ArrayList<cpu> byBoNhoDem(String key) {
-		ArrayList<cpu> list = new ArrayList<cpu>();
-		ArrayList<cpu> listcpu = cpuDAO.getInstance().selectAll();
-		for (cpu cpu : listcpu) {
-			if (cpu.getBoNhoDem().toLowerCase().contains(key.toLowerCase())) {
-				list.add(cpu);
+	public static ArrayList<CPU> byBoNhoDem(String key) {
+		ArrayList<CPU> list = new ArrayList<CPU>();
+		ArrayList<CPU> listCPU = CPUDAO.getInstance().selectAll();
+		for (CPU CPU : listCPU) {
+			if (CPU.getBoNhoDem().toLowerCase().contains(key.toLowerCase())) {
+				list.add(CPU);
 			}
 		}
 		return list;
 	}
 	
-	public static ArrayList<cpu> byTonKho(String key) {
-		ArrayList<cpu> list = new ArrayList<cpu>();
-		ArrayList<cpu> listcpu = cpuDAO.getInstance().selectAll();
-		for (cpu cpu : listcpu) {
-			if (String.valueOf(cpu.getTonKho()).contains(key.toLowerCase())) {
-				list.add(cpu);
+	public static ArrayList<CPU> byTonKho(String key) {
+		ArrayList<CPU> list = new ArrayList<CPU>();
+		ArrayList<CPU> listCPU = CPUDAO.getInstance().selectAll();
+		for (CPU CPU : listCPU) {
+			if (String.valueOf(CPU.getTonKho()).contains(key.toLowerCase())) {
+				list.add(CPU);
 			}
 		}
 		return list;
 	}
 
-	public static ArrayList<cpu> byGia(String key) {
-		ArrayList<cpu> list = new ArrayList<cpu>();
-		ArrayList<cpu> listcpu = cpuDAO.getInstance().selectAll();
-		for (cpu cpu : listcpu) {
-			if (String.valueOf(cpu.getDonGia()).contains(key.toLowerCase())) {
-				list.add(cpu);
+	public static ArrayList<CPU> byGia(String key) {
+		ArrayList<CPU> list = new ArrayList<CPU>();
+		ArrayList<CPU> listCPU = CPUDAO.getInstance().selectAll();
+		for (CPU CPU : listCPU) {
+			if (String.valueOf(CPU.getDonGia()).contains(key.toLowerCase())) {
+				list.add(CPU);
 			}
 		}
 		return list;

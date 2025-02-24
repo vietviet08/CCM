@@ -2,8 +2,8 @@ package com.ccm.controller;
 
 import java.util.ArrayList;
 
-import dao.PhieuNhapDAO;
-import model.PhieuNhap;
+import com.ccm.dao.PhieuNhapDAO;
+import com.ccm.model.PhieuNhap;
 
 public class TimKiemPhieuNhap {
 //	{ "ID đơn nhập",

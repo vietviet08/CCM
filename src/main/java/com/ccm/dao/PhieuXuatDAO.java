@@ -5,8 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import db.JDBCUntil;
-import model.PhieuXuat;
+import com.ccm.db.JDBCUntil;
+import com.ccm.model.PhieuXuat;
 
 public class PhieuXuatDAO implements DAOInterface<PhieuXuat> {
 

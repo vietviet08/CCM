@@ -2,89 +2,89 @@ package com.ccm.controller;
 
 import java.util.ArrayList;
 
-import dao.vgaDAO;
-import model.vga;
+import com.ccm.dao.VGADAO;
+import com.ccm.model.VGA;
 
 public class TimKiemVGA {
-	public static ArrayList<vga> byID(String key) {
-		ArrayList<vga> list = new ArrayList<vga>();
-		ArrayList<vga> listram = vgaDAO.getInstance().selectAll();
+	public static ArrayList<VGA> byID(String key) {
+		ArrayList<VGA> list = new ArrayList<VGA>();
+		ArrayList<VGA> listram = VGADAO.getInstance().selectAll();
 
-		for (vga vga : listram) {
-			if (vga.getIdSanPham().toLowerCase().contains(key.toLowerCase())) {
-				list.add(vga);
+		for (VGA VGA : listram) {
+			if (VGA.getIdSanPham().toLowerCase().contains(key.toLowerCase())) {
+				list.add(VGA);
 			}
 		}
 		return list;
 	}
 	
-	public static ArrayList<vga> byIDVGA(String key) {
-		ArrayList<vga> list = new ArrayList<vga>();
-		ArrayList<vga> listram = vgaDAO.getInstance().selectAll();
+	public static ArrayList<VGA> byIDVGA(String key) {
+		ArrayList<VGA> list = new ArrayList<VGA>();
+		ArrayList<VGA> listram = VGADAO.getInstance().selectAll();
 
-		for (vga vga : listram) {
-			if (vga.getIdVga().toLowerCase().contains(key.toLowerCase())) {
-				list.add(vga);
+		for (VGA VGA : listram) {
+			if (VGA.getIdVga().toLowerCase().contains(key.toLowerCase())) {
+				list.add(VGA);
 			}
 		}
 		return list;
 	}
 
-	public static ArrayList<vga> byTen(String key) {
-		ArrayList<vga> list = new ArrayList<vga>();
-		ArrayList<vga> listram = vgaDAO.getInstance().selectAll();
+	public static ArrayList<VGA> byTen(String key) {
+		ArrayList<VGA> list = new ArrayList<VGA>();
+		ArrayList<VGA> listram = VGADAO.getInstance().selectAll();
 
-		for (vga vga : listram) {
-			if (vga.getTenVGA().toLowerCase().contains(key.toLowerCase())) {
-				list.add(vga);
+		for (VGA VGA : listram) {
+			if (VGA.getTenVGA().toLowerCase().contains(key.toLowerCase())) {
+				list.add(VGA);
 			}
 		}
 		return list;
 	}
 
-	public static ArrayList<vga> byHang(String key) {
-		ArrayList<vga> list = new ArrayList<vga>();
-		ArrayList<vga> listram = vgaDAO.getInstance().selectAll();
+	public static ArrayList<VGA> byHang(String key) {
+		ArrayList<VGA> list = new ArrayList<VGA>();
+		ArrayList<VGA> listram = VGADAO.getInstance().selectAll();
 
-		for (vga vga : listram) {
-			if (vga.getHangVGA().toLowerCase().contains(key.toLowerCase())) {
-				list.add(vga);
+		for (VGA VGA : listram) {
+			if (VGA.getHangVGA().toLowerCase().contains(key.toLowerCase())) {
+				list.add(VGA);
 			}
 		}
 		return list;
 	}
 
-	public static ArrayList<vga> byBoNho(String key) {
-		ArrayList<vga> list = new ArrayList<vga>();
-		ArrayList<vga> listram = vgaDAO.getInstance().selectAll();
+	public static ArrayList<VGA> byBoNho(String key) {
+		ArrayList<VGA> list = new ArrayList<VGA>();
+		ArrayList<VGA> listram = VGADAO.getInstance().selectAll();
 
-		for (vga vga : listram) {
-			if (vga.getBoNho().toLowerCase().contains(key.toLowerCase())) {
-				list.add(vga);
+		for (VGA VGA : listram) {
+			if (VGA.getBoNho().toLowerCase().contains(key.toLowerCase())) {
+				list.add(VGA);
 			}
 		}
 		return list;
 	}
 	
-	public static ArrayList<vga> byTonKho(String key) {
-		ArrayList<vga> list = new ArrayList<vga>();
-		ArrayList<vga> listram = vgaDAO.getInstance().selectAll();
+	public static ArrayList<VGA> byTonKho(String key) {
+		ArrayList<VGA> list = new ArrayList<VGA>();
+		ArrayList<VGA> listram = VGADAO.getInstance().selectAll();
 
-		for (vga vga : listram) {
-			if (String.valueOf(vga.getTonKho()).contains(key.toLowerCase())) {
-				list.add(vga);
+		for (VGA VGA : listram) {
+			if (String.valueOf(VGA.getTonKho()).contains(key.toLowerCase())) {
+				list.add(VGA);
 			}
 		}
 		return list;
 	}
 
-	public static ArrayList<vga> byGia(String key) {
-		ArrayList<vga> list = new ArrayList<vga>();
-		ArrayList<vga> listram = vgaDAO.getInstance().selectAll();
+	public static ArrayList<VGA> byGia(String key) {
+		ArrayList<VGA> list = new ArrayList<VGA>();
+		ArrayList<VGA> listram = VGADAO.getInstance().selectAll();
 
-		for (vga vga : listram) {
-			if (String.valueOf(vga.getDonGia()).contains(key.toLowerCase())) {
-				list.add(vga);
+		for (VGA VGA : listram) {
+			if (String.valueOf(VGA.getDonGia()).contains(key.toLowerCase())) {
+				list.add(VGA);
 			}
 		}
 		return list;
