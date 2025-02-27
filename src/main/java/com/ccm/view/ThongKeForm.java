@@ -8,8 +8,7 @@ import com.ccm.controller.FormatToVND;
 import com.ccm.dao.*;
 import com.ccm.decor.PanelRoundThongKe;
 import com.ccm.font.SetFont;
-import com.ccm.model.Case;
-import com.ccm.model.ChiTietPhieu;
+import com.ccm.model.*;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -61,8 +60,8 @@ public class ThongKeForm extends JInternalFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    ThongKeForm frame = new ThongKeForm();
-                    frame.setVisible(true);
+                    ThongKeForm fRAMe = new ThongKeForm();
+                    fRAMe.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -71,7 +70,7 @@ public class ThongKeForm extends JInternalFrame {
     }
 
     /**
-     * Create the frame.
+     * Create the fRAMe.
      */
     public ThongKeForm() {
         setBounds(100, 100, 1170, 730);
@@ -104,10 +103,10 @@ public class ThongKeForm extends JInternalFrame {
         panel.add(tfLoaiSP_1);
 
         JLabel tfLoaiSP_1_1 = new JLabel(
-                String.valueOf(cpuDAO.getInstance().selectAll().size() + ramDAO.getInstance().selectAll().size()
-                        + vgaDAO.getInstance().selectAll().size() + caseDAO.getInstance().selectAll().size()
-                        + mainDAO.getInstance().selectAll().size() + psuDAO.getInstance().selectAll().size()
-                        + ssdDAO.getInstance().selectAll().size() + hddDAO.getInstance().selectAll().size()));
+                String.valueOf(CPUDAO.getInstance().selectAll().size() + RAMDAO.getInstance().selectAll().size()
+                        + VGADAO.getInstance().selectAll().size() + CaseDAO.getInstance().selectAll().size()
+                        + MainBoardDAO.getInstance().selectAll().size() + PSUDAO.getInstance().selectAll().size()
+                        + SSDDAO.getInstance().selectAll().size() + HDDDAO.getInstance().selectAll().size()));
         tfLoaiSP_1_1.setHorizontalAlignment(SwingConstants.CENTER);
         tfLoaiSP_1_1.setForeground(new Color(254, 254, 254));
         tfLoaiSP_1_1.setFont(SetFont.fontThongKe1());
@@ -387,38 +386,38 @@ public class ThongKeForm extends JInternalFrame {
         tabbedPane.addTab("Thống kê sản phẩm", null, panel_5, null);
         panel_5.setLayout(null);
 
-        ModelPieChart cpu = new ModelPieChart();
-        cpu.setName("CPU");
-        cpu.setValues(cpuDAO.getInstance().selectAll().size());
-        cpu.setColor(new Color(236, 112, 99));
-        ModelPieChart ram = new ModelPieChart();
-        ram.setName("RAM");
-        ram.setValues(ramDAO.getInstance().selectAll().size());
-        ram.setColor(new Color(165, 105, 189));
-        ModelPieChart vga = new ModelPieChart();
-        vga.setName("VGA");
-        vga.setValues(vgaDAO.getInstance().selectAll().size());
-        vga.setColor(new Color(93, 173, 226));
-        ModelPieChart casee = new ModelPieChart();
-        casee.setName("CASE");
-        casee.setValues(caseDAO.getInstance().selectAll().size());
-        casee.setColor(new Color(69, 179, 157));
+        ModelPieChart CPU = new ModelPieChart();
+        CPU.setName("CPU");
+        CPU.setValues(CPUDAO.getInstance().selectAll().size());
+        CPU.setColor(new Color(236, 112, 99));
+        ModelPieChart RAM = new ModelPieChart();
+        RAM.setName("RAM");
+        RAM.setValues(RAMDAO.getInstance().selectAll().size());
+        RAM.setColor(new Color(165, 105, 189));
+        ModelPieChart VGA = new ModelPieChart();
+        VGA.setName("VGA");
+        VGA.setValues(VGADAO.getInstance().selectAll().size());
+        VGA.setColor(new Color(93, 173, 226));
+        ModelPieChart Casee = new ModelPieChart();
+        Casee.setName("CASE");
+        Casee.setValues(CaseDAO.getInstance().selectAll().size());
+        Casee.setColor(new Color(69, 179, 157));
         ModelPieChart mb = new ModelPieChart();
         mb.setName("Mainboard");
-        mb.setValues(mainDAO.getInstance().selectAll().size());
+        mb.setValues(MainBoardDAO.getInstance().selectAll().size());
         mb.setColor(new Color(247, 220, 111));
-        ModelPieChart psu = new ModelPieChart();
-        psu.setName("Nguồn");
-        psu.setValues(psuDAO.getInstance().selectAll().size());
-        psu.setColor(new Color(235, 152, 78));
-        ModelPieChart ssd = new ModelPieChart();
-        ssd.setName("SSD");
-        ssd.setValues(ssdDAO.getInstance().selectAll().size());
-        ssd.setColor(new Color(202, 207, 210));
-        ModelPieChart hdd = new ModelPieChart();
-        hdd.setName("HDD");
-        hdd.setValues(hddDAO.getInstance().selectAll().size());
-        hdd.setColor(new Color(86, 101, 115));
+        ModelPieChart PSU = new ModelPieChart();
+        PSU.setName("Nguồn");
+        PSU.setValues(PSUDAO.getInstance().selectAll().size());
+        PSU.setColor(new Color(235, 152, 78));
+        ModelPieChart SSD = new ModelPieChart();
+        SSD.setName("SSD");
+        SSD.setValues(SSDDAO.getInstance().selectAll().size());
+        SSD.setColor(new Color(202, 207, 210));
+        ModelPieChart HDD = new ModelPieChart();
+        HDD.setName("HDD");
+        HDD.setValues(HDDDAO.getInstance().selectAll().size());
+        HDD.setColor(new Color(86, 101, 115));
 
         PieChart chart = new PieChart();
         chart.setChartType(PeiChartType.DONUT_CHART);
@@ -427,65 +426,65 @@ public class ThongKeForm extends JInternalFrame {
             public void mouseClicked(MouseEvent e) {
                 if (chart.getSelectedIndex() == 0) {
                     labelLoaiSP.setText("CPU");
-                    labelTongDong.setText(SanPhamDAO.getIDSanPham("cpu").size() + "");
-                    labelTongSP.setText(cpuDAO.getInstance().selectAll().size() + "");
-                    labelTongTonKho.setText(cpuDAO.tongTonKho() + "");
-                    labelTongLuotBan.setText(ChiTietPhieuXuatDAO.getInstance().tongDonXuat("cpu") + "");
+                    labelTongDong.setText(SanPhamDAO.getIDSanPham("CPU").size() + "");
+                    labelTongSP.setText(CPUDAO.getInstance().selectAll().size() + "");
+                    labelTongTonKho.setText(CPUDAO.tongTonKho() + "");
+                    labelTongLuotBan.setText(ChiTietPhieuXuatDAO.getInstance().tongDonXuat("CPU") + "");
                 } else if (chart.getSelectedIndex() == 1) {
                     labelLoaiSP.setText("RAM");
-                    labelTongDong.setText(SanPhamDAO.getIDSanPham("ram").size() + "");
-                    labelTongSP.setText(ramDAO.getInstance().selectAll().size() + "");
-                    labelTongTonKho.setText(ramDAO.tongTonKho() + "");
-                    labelTongLuotBan.setText(ChiTietPhieuXuatDAO.getInstance().tongDonXuat("ram") + "");
+                    labelTongDong.setText(SanPhamDAO.getIDSanPham("RAM").size() + "");
+                    labelTongSP.setText(RAMDAO.getInstance().selectAll().size() + "");
+                    labelTongTonKho.setText(RAMDAO.tongTonKho() + "");
+                    labelTongLuotBan.setText(ChiTietPhieuXuatDAO.getInstance().tongDonXuat("RAM") + "");
                 } else if (chart.getSelectedIndex() == 2) {
                     labelLoaiSP.setText("VGA");
-                    labelTongDong.setText(SanPhamDAO.getIDSanPham("vga").size() + "");
-                    labelTongSP.setText(vgaDAO.getInstance().selectAll().size() + "");
-                    labelTongTonKho.setText(vgaDAO.tongTonKho() + "");
-                    labelTongLuotBan.setText(ChiTietPhieuXuatDAO.getInstance().tongDonXuat("vga") + "");
+                    labelTongDong.setText(SanPhamDAO.getIDSanPham("VGA").size() + "");
+                    labelTongSP.setText(VGADAO.getInstance().selectAll().size() + "");
+                    labelTongTonKho.setText(VGADAO.tongTonKho() + "");
+                    labelTongLuotBan.setText(ChiTietPhieuXuatDAO.getInstance().tongDonXuat("VGA") + "");
                 } else if (chart.getSelectedIndex() == 4) {
                     labelLoaiSP.setText("Mainboard");
                     labelTongDong.setText(SanPhamDAO.getIDSanPham("main").size() + "");
-                    labelTongSP.setText(mainDAO.getInstance().selectAll().size() + "");
-                    labelTongTonKho.setText(mainDAO.tongTonKho() + "");
+                    labelTongSP.setText(MainBoardDAO.getInstance().selectAll().size() + "");
+                    labelTongTonKho.setText(MainBoardDAO.tongTonKho() + "");
                     labelTongLuotBan.setText(ChiTietPhieuXuatDAO.getInstance().tongDonXuat("main") + "");
                 } else if (chart.getSelectedIndex() == 5) {
                     labelLoaiSP.setText("PSU");
-                    labelTongDong.setText(SanPhamDAO.getIDSanPham("psu").size() + "");
-                    labelTongSP.setText(psuDAO.getInstance().selectAll().size() + "");
-                    labelTongTonKho.setText(psuDAO.tongTonKho() + "");
-                    labelTongLuotBan.setText(ChiTietPhieuXuatDAO.getInstance().tongDonXuat("psu") + "");
+                    labelTongDong.setText(SanPhamDAO.getIDSanPham("PSU").size() + "");
+                    labelTongSP.setText(PSUDAO.getInstance().selectAll().size() + "");
+                    labelTongTonKho.setText(PSUDAO.tongTonKho() + "");
+                    labelTongLuotBan.setText(ChiTietPhieuXuatDAO.getInstance().tongDonXuat("PSU") + "");
                 } else if (chart.getSelectedIndex() == 3) {
                     labelLoaiSP.setText("CASE");
-                    labelTongDong.setText(SanPhamDAO.getIDSanPham("case").size() + "");
-                    labelTongSP.setText(caseDAO.getInstance().selectAll().size() + "");
-                    labelTongTonKho.setText(caseDAO.tongTonKho() + "");
-                    labelTongLuotBan.setText(ChiTietPhieuXuatDAO.getInstance().tongDonXuat("cases") + "");
+                    labelTongDong.setText(SanPhamDAO.getIDSanPham("Case").size() + "");
+                    labelTongSP.setText(CaseDAO.getInstance().selectAll().size() + "");
+                    labelTongTonKho.setText(CaseDAO.tongTonKho() + "");
+                    labelTongLuotBan.setText(ChiTietPhieuXuatDAO.getInstance().tongDonXuat("Cases") + "");
                 } else if (chart.getSelectedIndex() == 6) {
                     labelLoaiSP.setText("SSD");
-                    labelTongDong.setText(SanPhamDAO.getIDSanPham("ssd").size() + "");
-                    labelTongSP.setText(ssdDAO.getInstance().selectAll().size() + "");
-                    labelTongTonKho.setText(ssdDAO.tongTonKho() + "");
-                    labelTongLuotBan.setText(ChiTietPhieuXuatDAO.getInstance().tongDonXuat("ssd") + "");
+                    labelTongDong.setText(SanPhamDAO.getIDSanPham("SSD").size() + "");
+                    labelTongSP.setText(SSDDAO.getInstance().selectAll().size() + "");
+                    labelTongTonKho.setText(SSDDAO.tongTonKho() + "");
+                    labelTongLuotBan.setText(ChiTietPhieuXuatDAO.getInstance().tongDonXuat("SSD") + "");
                 } else if (chart.getSelectedIndex() == 7) {
                     labelLoaiSP.setText("HDD");
-                    labelTongDong.setText(SanPhamDAO.getIDSanPham("hdd").size() + "");
-                    labelTongSP.setText(hddDAO.getInstance().selectAll().size() + "");
-                    labelTongTonKho.setText(hddDAO.tongTonKho() + "");
-                    labelTongLuotBan.setText(ChiTietPhieuXuatDAO.getInstance().tongDonXuat("hdd") + "");
+                    labelTongDong.setText(SanPhamDAO.getIDSanPham("HDD").size() + "");
+                    labelTongSP.setText(HDDDAO.getInstance().selectAll().size() + "");
+                    labelTongTonKho.setText(HDDDAO.tongTonKho() + "");
+                    labelTongLuotBan.setText(ChiTietPhieuXuatDAO.getInstance().tongDonXuat("HDD") + "");
                 }
             }
         });
         chart.setBounds(0, 0, 400, 400);
 
-        chart.addData(cpu);
-        chart.addData(ram);
-        chart.addData(vga);
-        chart.addData(casee);
+        chart.addData(CPU);
+        chart.addData(RAM);
+        chart.addData(VGA);
+        chart.addData(Casee);
         chart.addData(mb);
-        chart.addData(psu);
-        chart.addData(ssd);
-        chart.addData(hdd);
+        chart.addData(PSU);
+        chart.addData(SSD);
+        chart.addData(HDD);
 
         panel_5.add(chart);
 
@@ -552,53 +551,53 @@ public class ThongKeForm extends JInternalFrame {
 
     private void setDetalProduct(String idsp, int luotban, JLabel labelIMG, JLabel labelTenSp, JLabel labelGia,
                                  JLabel labelLuotBan) {
-        if (idsp.contains("cpu")) {
-            cpu cpu = cpuDAO.getInstance().selectById(idsp);
-            Blob blob = cpu.getImg();
+        if (idsp.contains("CPU")) {
+            CPU CPU = CPUDAO.getInstance().selectById(idsp);
+            Blob blob = CPU.getImg();
             try {
                 byte[] by = blob.getBytes(1, (int) blob.length());
                 ImageIcon ii = new ImageIcon(by);
                 Image i = ii.getImage().getScaledInstance(labelIMG_1st.getWidth(), labelIMG_1st.getHeight(),
                         Image.SCALE_SMOOTH);
                 labelIMG.setIcon(ii = new ImageIcon(i));
-                labelTenSp.setText(cpu.getNameCpu());
-                labelGia.setText(FormatToVND.vnd(cpu.getDonGia()));
+                labelTenSp.setText(CPU.getNameCpu());
+                labelGia.setText(FormatToVND.vnd(CPU.getDonGia()));
                 labelLuotBan.setText("Tổng lượt bán: " + luotban);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         } else if (idsp.contains("r")) {
-            ram ram = ramDAO.getInstance().selectById(idsp);
-            Blob blob = ram.getImg();
+            RAM RAM = RAMDAO.getInstance().selectById(idsp);
+            Blob blob = RAM.getImg();
             try {
                 byte[] by = blob.getBytes(1, (int) blob.length());
                 ImageIcon ii = new ImageIcon(by);
                 Image i = ii.getImage().getScaledInstance(labelIMG_1st.getWidth(), labelIMG_1st.getHeight(),
                         Image.SCALE_SMOOTH);
                 labelIMG.setIcon(ii = new ImageIcon(i));
-                labelTenSp.setText(ram.getTenRam());
-                labelGia.setText(FormatToVND.vnd(ram.getDonGia()));
+                labelTenSp.setText(RAM.getTenRam());
+                labelGia.setText(FormatToVND.vnd(RAM.getDonGia()));
                 labelLuotBan.setText("Tổng lượt bán: " + luotban);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        } else if (idsp.contains("vga")) {
-            vga vga = vgaDAO.getInstance().selectById(idsp);
-            Blob blob = vga.getImg();
+        } else if (idsp.contains("VGA")) {
+            VGA VGA = VGADAO.getInstance().selectById(idsp);
+            Blob blob = VGA.getImg();
             try {
                 byte[] by = blob.getBytes(1, (int) blob.length());
                 ImageIcon ii = new ImageIcon(by);
                 Image i = ii.getImage().getScaledInstance(labelIMG_1st.getWidth(), labelIMG_1st.getHeight(),
                         Image.SCALE_SMOOTH);
                 labelIMG.setIcon(ii = new ImageIcon(i));
-                labelTenSp.setText(vga.getTenVGA());
-                labelGia.setText(FormatToVND.vnd(vga.getDonGia()));
+                labelTenSp.setText(VGA.getTenVGA());
+                labelGia.setText(FormatToVND.vnd(VGA.getDonGia()));
                 labelLuotBan.setText("Tổng lượt bán: " + luotban);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        } else if (idsp.contains("case")) {
-            Case c = caseDAO.getInstance().selectById(idsp);
+        } else if (idsp.contains("Case")) {
+            Case c = CaseDAO.getInstance().selectById(idsp);
             Blob blob = c.getImg();
             try {
                 byte[] by = blob.getBytes(1, (int) blob.length());
@@ -613,7 +612,7 @@ public class ThongKeForm extends JInternalFrame {
                 e.printStackTrace();
             }
         } else if (idsp.contains("mba")) {
-            mainboard mb = mainDAO.getInstance().selectById(idsp);
+            MainBoard mb = MainBoardDAO.getInstance().selectById(idsp);
             Blob blob = mb.getImg();
             try {
                 byte[] by = blob.getBytes(1, (int) blob.length());
@@ -627,47 +626,47 @@ public class ThongKeForm extends JInternalFrame {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        } else if (idsp.contains("psu")) {
-            psu psu = psuDAO.getInstance().selectById(idsp);
-            Blob blob = psu.getImg();
+        } else if (idsp.contains("PSU")) {
+            PSU PSU = PSUDAO.getInstance().selectById(idsp);
+            Blob blob = PSU.getImg();
             try {
                 byte[] by = blob.getBytes(1, (int) blob.length());
                 ImageIcon ii = new ImageIcon(by);
                 Image i = ii.getImage().getScaledInstance(labelIMG_1st.getWidth(), labelIMG_1st.getHeight(),
                         Image.SCALE_SMOOTH);
                 labelIMG.setIcon(ii = new ImageIcon(i));
-                labelTenSp.setText(psu.getTenNguon());
-                labelGia.setText(FormatToVND.vnd(psu.getDonGia()));
+                labelTenSp.setText(PSU.getTenNguon());
+                labelGia.setText(FormatToVND.vnd(PSU.getDonGia()));
                 labelLuotBan.setText("Tổng lượt bán: " + luotban);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        } else if (idsp.contains("hdd")) {
-            hdd hdd = hddDAO.getInstance().selectById(idsp);
-            Blob blob = hdd.getImg();
+        } else if (idsp.contains("HDD")) {
+            HDD HDD = HDDDAO.getInstance().selectById(idsp);
+            Blob blob = HDD.getImg();
             try {
                 byte[] by = blob.getBytes(1, (int) blob.length());
                 ImageIcon ii = new ImageIcon(by);
                 Image i = ii.getImage().getScaledInstance(labelIMG_1st.getWidth(), labelIMG_1st.getHeight(),
                         Image.SCALE_SMOOTH);
                 labelIMG.setIcon(ii = new ImageIcon(i));
-                labelTenSp.setText(hdd.getTenHdd());
-                labelGia.setText(FormatToVND.vnd(hdd.getGia()));
+                labelTenSp.setText(HDD.getTenHdd());
+                labelGia.setText(FormatToVND.vnd(HDD.getGia()));
                 labelLuotBan.setText("Tổng lượt bán: " + luotban);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        } else if (idsp.contains("ssd")) {
-            ssd ssd = ssdDAO.getInstance().selectById(idsp);
-            Blob blob = ssd.getImg();
+        } else if (idsp.contains("SSD")) {
+            SSD SSD = SSDDAO.getInstance().selectById(idsp);
+            Blob blob = SSD.getImg();
             try {
                 byte[] by = blob.getBytes(1, (int) blob.length());
                 ImageIcon ii = new ImageIcon(by);
                 Image i = ii.getImage().getScaledInstance(labelIMG_1st.getWidth(), labelIMG_1st.getHeight(),
                         Image.SCALE_SMOOTH);
                 labelIMG.setIcon(ii = new ImageIcon(i));
-                labelTenSp.setText(ssd.getTenSsd());
-                labelGia.setText(FormatToVND.vnd(ssd.getGia()));
+                labelTenSp.setText(SSD.getTenSsd());
+                labelGia.setText(FormatToVND.vnd(SSD.getGia()));
                 labelLuotBan.setText("Tổng lượt bán: " + luotban);
             } catch (SQLException e) {
                 e.printStackTrace();
