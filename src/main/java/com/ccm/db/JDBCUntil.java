@@ -8,9 +8,9 @@ public class JDBCUntil {
 	public static Connection getConnection() {
 		Connection c = null;
 		try {
-			c = DriverManager.getConnection("jdbc:mySQL://localhost:3306/quanlilkmt", "root", "");
+			c = DriverManager.getConnection("jdbc:mysql://localhost:3308/ccm", "root", "root");
 			if (c != null) {
-				System.out.println("ket noi thanh cong");
+				System.out.println("connect successfully");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
