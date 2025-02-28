@@ -31,7 +31,7 @@ public class VGADAO implements DAOInterface<VGA> {
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "INSERT INTO VGA (idsanpham, idVGA, tenVGA, hangVGA, bonho, tonkho, dongia, baohanh, img) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "INSERT INTO vga (idsanpham, idvga, tenvga, hangVGA, bonho, tonkho, dongia, baohanh, img) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -68,7 +68,7 @@ public class VGADAO implements DAOInterface<VGA> {
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "INSERT INTO VGA (idsanpham, idVGA, tenVGA, hangVGA, bonho, tonkho, dongia, baohanh, img) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "INSERT INTO vga (idsanpham, idvga, tenvga, hangVGA, bonho, tonkho, dongia, baohanh, img) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -103,7 +103,7 @@ public class VGADAO implements DAOInterface<VGA> {
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "INSERT INTO VGA (idsanpham, idVGA, tenVGA, hangVGA, bonho, tonkho, dongia, baohanh) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "INSERT INTO vga (idsanpham, idvga, tenvga, hangVGA, bonho, tonkho, dongia, baohanh) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -134,7 +134,7 @@ public class VGADAO implements DAOInterface<VGA> {
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "UPDATE VGA SET idsanpham = ?, tenVGA = ?, hangVGA = ?, bonho = ?, tonkho = ?, dongia = ?, baohanh = ?, img = ? WHERE idVGA = ?;";
+			String sql = "UPDATE vga SET idsanpham = ?, tenvga = ?, hangVGA = ?, bonho = ?, tonkho = ?, dongia = ?, baohanh = ?, img = ? WHERE idvga = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -171,7 +171,7 @@ public class VGADAO implements DAOInterface<VGA> {
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "UPDATE VGA SET idsanpham = ?, tenVGA = ?, hangVGA = ?, bonho = ?, tonkho = ?, dongia = ?, baohanh = ?, img = ? WHERE idVGA = ?;";
+			String sql = "UPDATE vga SET idsanpham = ?, tenvga = ?, hangVGA = ?, bonho = ?, tonkho = ?, dongia = ?, baohanh = ?, img = ? WHERE idvga = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -206,7 +206,7 @@ public class VGADAO implements DAOInterface<VGA> {
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "UPDATE VGA SET idsanpham = ?, tenVGA = ?, hangVGA = ?, bonho = ?, tonkho = ?, dongia = ?, baohanh = ? WHERE idVGA = ?;";
+			String sql = "UPDATE vga SET idsanpham = ?, tenvga = ?, hangVGA = ?, bonho = ?, tonkho = ?, dongia = ?, baohanh = ? WHERE idvga = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -239,9 +239,9 @@ public class VGADAO implements DAOInterface<VGA> {
 			for (ChiTietPhieu productNhap : pn) {
 				if (productNhap.getIdRieng().contains("VGA")) {
 
-					String sql = "UPDATE VGA SET  tonkho = tonkho + ? WHERE idVGA = ?;";
+					String sql = "UPDATE vga SET  tonkho = tonkho + ? WHERE idvga = ?;";
 					if(nhapHang == false)
-						sql = "UPDATE VGA SET  tonkho = tonkho - ? WHERE idVGA = ?;";
+						sql = "UPDATE vga SET  tonkho = tonkho - ? WHERE idvga = ?;";
 
 					PreparedStatement ps = con.prepareStatement(sql);
 					ps.setInt(1, productNhap.getSoLuong());
@@ -266,7 +266,7 @@ public class VGADAO implements DAOInterface<VGA> {
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "DELETE FROM VGA WHERE idVGA = ?;";
+			String sql = "DELETE FROM vga WHERE idvga = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -290,14 +290,14 @@ public class VGADAO implements DAOInterface<VGA> {
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "SELECT * FROM VGA;";
+			String sql = "SELECT * FROM vga;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				VGA VGA = new VGA(rs.getString("idsanpham"), rs.getString("idVGA"), rs.getString("tenVGA"),
+				VGA VGA = new VGA(rs.getString("idsanpham"), rs.getString("idvga"), rs.getString("tenvga"),
 						rs.getString("hangVGA"), rs.getString("bonho"), rs.getInt("tonkho"), rs.getDouble("dongia"),
 						rs.getString("baohanh"), rs.getBlob("img"));
 				v.add(VGA);
@@ -315,14 +315,14 @@ public class VGADAO implements DAOInterface<VGA> {
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "SELECT * FROM VGA;";
+			String sql = "SELECT * FROM vga;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				VGA VGA = new VGA(rs.getString("idsanpham"), rs.getString("idVGA"), rs.getString("tenVGA"),
+				VGA VGA = new VGA(rs.getString("idsanpham"), rs.getString("idvga"), rs.getString("tenvga"),
 						rs.getDouble("dongia"), rs.getString("baohanh"));
 				v.add(VGA);
 			}
@@ -340,7 +340,7 @@ public class VGADAO implements DAOInterface<VGA> {
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "SELECT * FROM VGA where idVGA = ?;";
+			String sql = "SELECT * FROM vga where idvga = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -349,7 +349,7 @@ public class VGADAO implements DAOInterface<VGA> {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				v = new VGA(rs.getString("idsanpham"), rs.getString("idVGA"), rs.getString("tenVGA"),
+				v = new VGA(rs.getString("idsanpham"), rs.getString("idvga"), rs.getString("tenvga"),
 						rs.getString("hangVGA"), rs.getString("bonho"), rs.getInt("tonkho"), rs.getDouble("dongia"),
 						rs.getString("baohanh"), rs.getBlob("img"));
 			}
@@ -365,7 +365,7 @@ public class VGADAO implements DAOInterface<VGA> {
 	
 	public static int tongTonKho() {
 		int tonkho = 0;
-		String sql = "SELECT SUM(VGA.tonkho) AS total\r\n" + "FROM VGA";
+		String sql = "SELECT SUM(vga.tonkho) AS total\r\n" + "FROM vga";
 		try {
 			Connection con = JDBCUntil.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);

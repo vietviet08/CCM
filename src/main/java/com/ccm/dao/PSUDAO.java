@@ -29,7 +29,7 @@ public class PSUDAO implements DAOInterface<PSU> {
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "insert into PSU (idsanpham, idnguon, tennguon, hang, congsuat, chuannguon, kieuday, kichthuoc, tonkho, gia, baohanh, img) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "insert into psu (idsanpham, idnguon, tennguon, hang, congsuat, chuannguon, kieuday, kichthuoc, tonkho, gia, baohanh, img) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, t.getIdSanPham());
@@ -64,7 +64,7 @@ public class PSUDAO implements DAOInterface<PSU> {
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "insert into PSU (idsanpham, idnguon, tennguon, hang, congsuat, chuannguon, kieuday, kichthuoc, tonkho, gia, baohanh, img) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "insert into psu (idsanpham, idnguon, tennguon, hang, congsuat, chuannguon, kieuday, kichthuoc, tonkho, gia, baohanh, img) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, t.getIdSanPham());
@@ -97,7 +97,7 @@ public class PSUDAO implements DAOInterface<PSU> {
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "insert into PSU (idsanpham, idnguon, tennguon, hang, congsuat, chuannguon, kieuday, kichthuoc, tonkho, gia, baohanh) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "insert into psu (idsanpham, idnguon, tennguon, hang, congsuat, chuannguon, kieuday, kichthuoc, tonkho, gia, baohanh) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, t.getIdSanPham());
@@ -126,7 +126,7 @@ public class PSUDAO implements DAOInterface<PSU> {
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "update PSU set idsanpham = ?, tennguon = ?, hang = ?, congsuat = ?, chuannguon = ?, kieuday = ?, kichthuoc = ?, tonkho = ?, gia = ?, baohanh = ?, img = ? where idnguon = ?;";
+			String sql = "update psu set idsanpham = ?, tennguon = ?, hang = ?, congsuat = ?, chuannguon = ?, kieuday = ?, kichthuoc = ?, tonkho = ?, gia = ?, baohanh = ?, img = ? where idnguon = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, t.getIdSanPham());
@@ -158,7 +158,7 @@ public class PSUDAO implements DAOInterface<PSU> {
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "update PSU set idsanpham = ?, tennguon = ?, hang = ?, congsuat = ?, chuannguon = ?, kieuday = ?, kichthuoc = ?, tonkho = ?, gia = ?, baohanh = ?, img = ? where idnguon = ?;";
+			String sql = "update psu set idsanpham = ?, tennguon = ?, hang = ?, congsuat = ?, chuannguon = ?, kieuday = ?, kichthuoc = ?, tonkho = ?, gia = ?, baohanh = ?, img = ? where idnguon = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, t.getIdSanPham());
@@ -192,7 +192,7 @@ public class PSUDAO implements DAOInterface<PSU> {
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "update PSU set idsanpham = ?, tennguon = ?, hang = ?, congsuat = ?, chuannguon = ?, kieuday = ?, kichthuoc = ?, tonkho = ?, gia = ?, baohanh = ? where idnguon = ?;";
+			String sql = "update psu set idsanpham = ?, tennguon = ?, hang = ?, congsuat = ?, chuannguon = ?, kieuday = ?, kichthuoc = ?, tonkho = ?, gia = ?, baohanh = ? where idnguon = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, t.getIdSanPham());
@@ -220,9 +220,9 @@ public class PSUDAO implements DAOInterface<PSU> {
 
 		try {
 			Connection con = JDBCUntil.getConnection();
-			String sql = "UPDATE PSU SET tonkho = tonkho + ? WHERE idnguon = ? ;";
+			String sql = "UPDATE psu SET tonkho = tonkho + ? WHERE idnguon = ? ;";
 			if (nhapHang == false)
-				sql = "UPDATE PSU SET tonkho = tonkho - ? WHERE idnguon = ? ;";
+				sql = "UPDATE psu SET tonkho = tonkho - ? WHERE idnguon = ? ;";
 			for (ChiTietPhieu productNhap : pn) {
 				if (productNhap.getIdRieng().contains("PSU")) {
 					PreparedStatement ps = con.prepareStatement(sql);
@@ -245,7 +245,7 @@ public class PSUDAO implements DAOInterface<PSU> {
 		try {
 			Connection con = JDBCUntil.getConnection();
 
-			String sql = "delete from PSU where idnguon = ?;";
+			String sql = "delete from psu where idnguon = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, t.getIdNguon());
@@ -263,7 +263,7 @@ public class PSUDAO implements DAOInterface<PSU> {
 
 		try {
 			Connection con = JDBCUntil.getConnection();
-			String sql = "select * from PSU";
+			String sql = "select * from psu";
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ResultSet rs = ps.executeQuery();
@@ -288,7 +288,7 @@ public class PSUDAO implements DAOInterface<PSU> {
 		PSU PSU = null;
 		try {
 			Connection con = JDBCUntil.getConnection();
-			String sql = "select * from PSU where idnguon = ?";
+			String sql = "select * from psu where idnguon = ?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, t);
 			ResultSet rs = ps.executeQuery();
@@ -309,7 +309,7 @@ public class PSUDAO implements DAOInterface<PSU> {
 
 	public static int tongTonKho() {
 		int tonkho = 0;
-		String sql = "SELECT SUM(PSU.tonkho) AS total\r\n" + "FROM PSU";
+		String sql = "SELECT SUM(psu.tonkho) AS total\r\n" + "FROM psu";
 		try {
 			Connection con = JDBCUntil.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);

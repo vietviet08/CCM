@@ -28,7 +28,7 @@ public class SSDDAO implements DAOInterface<SSD> {
 		try {
 
 			Connection con = JDBCUntil.getConnection();
-			String sql = "insert into SSD (idsanpham, idSSD, tenSSD, hang, dungluong, loai, tocdodoc, tocdoghi, tonkho, gia, baohanh, img) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "insert into ssd (idsanpham, idssd, tenssd, hang, dungluong, loai, tocdodoc, tocdoghi, tonkho, gia, baohanh, img) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -62,7 +62,7 @@ public class SSDDAO implements DAOInterface<SSD> {
 		try {
 
 			Connection con = JDBCUntil.getConnection();
-			String sql = "insert into SSD (idsanpham, idSSD, tenSSD, hang, dungluong, loai, tocdodoc, tocdoghi, tonkho, gia, baohanh, img) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "insert into ssd (idsanpham, idssd, tenssd, hang, dungluong, loai, tocdodoc, tocdoghi, tonkho, gia, baohanh, img) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -99,7 +99,7 @@ public class SSDDAO implements DAOInterface<SSD> {
 		try {
 
 			Connection con = JDBCUntil.getConnection();
-			String sql = "insert into SSD (idsanpham, idSSD, tenSSD, hang, dungluong, loai, tocdodoc, tocdoghi, tonkho, gia, baohanh) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "insert into ssd (idsanpham, idssd, tenssd, hang, dungluong, loai, tocdodoc, tocdoghi, tonkho, gia, baohanh) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -130,7 +130,7 @@ public class SSDDAO implements DAOInterface<SSD> {
 		try {
 
 			Connection con = JDBCUntil.getConnection();
-			String sql = "update SSD set idsanpham = ? , tenSSD = ?, hang = ?, dungluong = ?, loai = ?, tocdodoc = ?, tocdoghi = ?, tonkho = ?, gia = ?, baohanh = ?, img = ? where idSSD = ?;";
+			String sql = "update ssd set idsanpham = ? , tenssd = ?, hang = ?, dungluong = ?, loai = ?, tocdodoc = ?, tocdoghi = ?, tonkho = ?, gia = ?, baohanh = ?, img = ? where idssd = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -164,7 +164,7 @@ public class SSDDAO implements DAOInterface<SSD> {
 		try {
 
 			Connection con = JDBCUntil.getConnection();
-			String sql = "update SSD set idsanpham = ? , tenSSD = ?, hang = ?, dungluong = ?, loai = ?, tocdodoc = ?, tocdoghi = ?, tonkho = ?, gia = ?, baohanh = ?, img = ? where idSSD = ?;";
+			String sql = "update ssd set idsanpham = ? , tenssd = ?, hang = ?, dungluong = ?, loai = ?, tocdodoc = ?, tocdoghi = ?, tonkho = ?, gia = ?, baohanh = ?, img = ? where idssd = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -200,7 +200,7 @@ public class SSDDAO implements DAOInterface<SSD> {
 		try {
 
 			Connection con = JDBCUntil.getConnection();
-			String sql = "update SSD set idsanpham = ? , tenSSD = ?, hang = ?, dungluong = ?, loai = ?, tocdodoc = ?, tocdoghi = ?, tonkho = ?, gia = ?, baohanh = ? where idSSD = ?;";
+			String sql = "update ssd set idsanpham = ? , tenssd = ?, hang = ?, dungluong = ?, loai = ?, tocdodoc = ?, tocdoghi = ?, tonkho = ?, gia = ?, baohanh = ? where idssd = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -230,9 +230,9 @@ public class SSDDAO implements DAOInterface<SSD> {
 
 		try {
 			Connection con = JDBCUntil.getConnection();
-			String sql = "UPDATE SSD SET  tonkho = tonkho + ? WHERE idSSD = ?;";
+			String sql = "UPDATE ssd SET  tonkho = tonkho + ? WHERE idssd = ?;";
 			if (nhapHang == false)
-				sql = "UPDATE SSD SET  tonkho = tonkho - ? WHERE idSSD = ?;";
+				sql = "UPDATE ssd SET  tonkho = tonkho - ? WHERE idssd = ?;";
 
 			for (ChiTietPhieu productNhap : pn) {
 
@@ -260,7 +260,7 @@ public class SSDDAO implements DAOInterface<SSD> {
 		try {
 
 			Connection con = JDBCUntil.getConnection();
-			String sql = "delete from SSD where idSSD = ?;";
+			String sql = "delete from ssd where idssd = ?;";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -280,13 +280,13 @@ public class SSDDAO implements DAOInterface<SSD> {
 
 		try {
 			Connection con = JDBCUntil.getConnection();
-			String sql = "select * from SSD;";
+			String sql = "select * from ssd;";
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ResultSet rs = ps.executeQuery();
-//			idsanpham, idSSD, tenSSD, hang, dungluong, loai, tocdodoc, tocdoghi, tonkho, gia, baohanh
+//			idsanpham, idssd, tenssd, hang, dungluong, loai, tocdodoc, tocdoghi, tonkho, gia, baohanh
 			while (rs.next()) {
-				SSD SSD = new SSD(rs.getString("idsanpham"), rs.getString("idSSD"), rs.getString("tenSSD"),
+				SSD SSD = new SSD(rs.getString("idsanpham"), rs.getString("idssd"), rs.getString("tenssd"),
 						rs.getString("hang"), rs.getString("dungluong"), rs.getString("loai"), rs.getString("tocdodoc"),
 						rs.getString("tocdoghi"), rs.getInt("tonkho"), rs.getDouble("gia"), rs.getString("baohanh"),
 						rs.getBlob("img"));
@@ -304,13 +304,13 @@ public class SSDDAO implements DAOInterface<SSD> {
 		SSD SSD = null;
 		try {
 			Connection con = JDBCUntil.getConnection();
-			String sql = "select * from SSD where idSSD = ?;";
+			String sql = "select * from ssd where idssd = ?;";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, t);
 			ResultSet rs = ps.executeQuery();
-//			idsanpham, idSSD, tenSSD, hang, dungluong, loai, tocdodoc, tocdoghi, tonkho, gia, baohanh
+//			idsanpham, idssd, tenssd, hang, dungluong, loai, tocdodoc, tocdoghi, tonkho, gia, baohanh
 			while (rs.next()) {
-				SSD = new SSD(rs.getString("idsanpham"), rs.getString("idSSD"), rs.getString("tenSSD"),
+				SSD = new SSD(rs.getString("idsanpham"), rs.getString("idssd"), rs.getString("tenssd"),
 						rs.getString("hang"), rs.getString("dungluong"), rs.getString("loai"), rs.getString("tocdodoc"),
 						rs.getString("tocdoghi"), rs.getInt("tonkho"), rs.getDouble("gia"), rs.getString("baohanh"),
 						rs.getBlob("img"));
@@ -324,7 +324,7 @@ public class SSDDAO implements DAOInterface<SSD> {
 
 	public static int tongTonKho() {
 		int tonkho = 0;
-		String sql = "SELECT SUM(SSD.tonkho) AS total\r\n" + "FROM SSD";
+		String sql = "SELECT SUM(ssd.tonkho) AS total\r\n" + "FROM ssd";
 		try {
 			Connection con = JDBCUntil.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
