@@ -71,12 +71,12 @@ public class CapNhatNhaPhanPhoi extends JFrame {
 
 		setUndecorated(true);
 		try {
-			File fontStyle = new File("src/font/Roboto-Medium.ttf");
+			File fontStyle = new File("/font/Roboto-Medium.ttf");
 			font = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(11f);
 			font_1 = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(14f);
 			font1 = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(16f);
 			font2 = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(22f);
-			File fontStyle1 = new File("src/font/Oswald-Medium.ttf");
+			File fontStyle1 = new File("/font/Oswald-Medium.ttf");
 			font3 = Font.createFont(Font.TRUETYPE_FONT, fontStyle1).deriveFont(18f);
 
 		} catch (Exception e) {

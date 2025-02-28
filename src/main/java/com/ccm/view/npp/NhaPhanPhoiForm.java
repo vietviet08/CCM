@@ -110,7 +110,7 @@ public class NhaPhanPhoiForm extends JInternalFrame {
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
 		try {
-			File fontStyle = new File("src/font/Roboto-Medium.ttf");
+			File fontStyle = new File("/font/Roboto-Medium.ttf");
 			font = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(11f);
 			font_1 = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(14f);
 			font1 = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(16f);
