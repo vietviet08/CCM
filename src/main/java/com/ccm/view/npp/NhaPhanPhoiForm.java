@@ -9,11 +9,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -110,11 +106,12 @@ public class NhaPhanPhoiForm extends JInternalFrame {
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
 		try {
-			File fontStyle = new File("/font/Roboto-Medium.ttf");
-			font = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(11f);
-			font_1 = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(14f);
-			font1 = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(16f);
-			font2 = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(22f);
+			InputStream fontStream = SetFont.class.getResourceAsStream("/font/Roboto-Medium.ttf");
+            assert fontStream != null;
+            font = Font.createFont(Font.TRUETYPE_FONT, fontStream).deriveFont(11f);
+			font_1 = Font.createFont(Font.TRUETYPE_FONT, fontStream).deriveFont(14f);
+			font1 = Font.createFont(Font.TRUETYPE_FONT, fontStream).deriveFont(16f);
+			font2 = Font.createFont(Font.TRUETYPE_FONT, fontStream).deriveFont(22f);
 
 		} catch (Exception e) {
 			System.out.println(e);

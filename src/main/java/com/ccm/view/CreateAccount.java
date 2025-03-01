@@ -5,6 +5,7 @@ import com.ccm.controller.BCrypt;
 import com.ccm.controller.SendEmailSMTP;
 import com.ccm.dao.AccountDAO;
 import com.ccm.decor.ButtonRound;
+import com.ccm.font.SetFont;
 import com.ccm.model.Account;
 import com.formdev.flatlaf.FlatLightLaf;
 
@@ -16,6 +17,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class CreateAccount extends JFrame {
@@ -64,11 +66,12 @@ public class CreateAccount extends JFrame {
     public CreateAccount() {
         setResizable(false);
         try {
-            File fontStyle = new File("/font/Roboto-Medium.ttf");
-            font = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(11f);
-            font_1 = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(14f);
-            font1 = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(16f);
-            font2 = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(22f);
+            InputStream fontStream = SetFont.class.getResourceAsStream("/font/Roboto-Medium.ttf");
+            assert fontStream != null;
+            font = Font.createFont(Font.TRUETYPE_FONT, fontStream).deriveFont(11f);
+            font_1 = Font.createFont(Font.TRUETYPE_FONT, fontStream).deriveFont(14f);
+            font1 = Font.createFont(Font.TRUETYPE_FONT, fontStream).deriveFont(16f);
+            font2 = Font.createFont(Font.TRUETYPE_FONT, fontStream).deriveFont(22f);
 
         } catch (Exception e) {
             System.out.println(e);

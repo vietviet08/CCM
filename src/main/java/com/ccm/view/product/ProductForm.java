@@ -87,11 +87,12 @@ public class ProductForm extends JInternalFrame {
     public ProductForm() {
 
         try {
-            File fontStyle = new File("/font/Roboto-Medium.ttf");
-            font = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(11f);
-            font_1 = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(14f);
-            font1 = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(16f);
-            font2 = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(22f);
+            InputStream fontStream = SetFont.class.getResourceAsStream("/font/Roboto-Medium.ttf");
+            assert fontStream != null;
+            font = Font.createFont(Font.TRUETYPE_FONT, fontStream).deriveFont(11f);
+            font_1 = Font.createFont(Font.TRUETYPE_FONT, fontStream).deriveFont(14f);
+            font1 = Font.createFont(Font.TRUETYPE_FONT, fontStream).deriveFont(16f);
+            font2 = Font.createFont(Font.TRUETYPE_FONT, fontStream).deriveFont(22f);
 
         } catch (Exception e) {
             System.out.println(e);

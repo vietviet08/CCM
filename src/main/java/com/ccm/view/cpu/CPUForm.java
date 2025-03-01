@@ -23,10 +23,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -131,11 +128,12 @@ public class CPUForm extends JInternalFrame {
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
         try {
-            File fontStyle = new File("/font/Roboto-Medium.ttf");
-            font = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(11f);
-            font_1 = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(14f);
-            font1 = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(16f);
-            font2 = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(22f);
+            InputStream fontStream = SetFont.class.getResourceAsStream("/font/Roboto-Medium.ttf");
+            assert fontStream != null;
+            font = Font.createFont(Font.TRUETYPE_FONT, fontStream).deriveFont(11f);
+            font_1 = Font.createFont(Font.TRUETYPE_FONT, fontStream).deriveFont(14f);
+            font1 = Font.createFont(Font.TRUETYPE_FONT, fontStream).deriveFont(16f);
+            font2 = Font.createFont(Font.TRUETYPE_FONT, fontStream).deriveFont(22f);
 
         } catch (Exception e) {
             System.out.println(e);

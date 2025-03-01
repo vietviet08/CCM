@@ -11,6 +11,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.RoundRectangle2D;
 import java.io.File;
+import java.io.InputStream;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -65,13 +66,16 @@ public class ThemNhaPhanPhoi extends JFrame {
 	public ThemNhaPhanPhoi() {
 
 		try {
-			File fontStyle = new File("/font/Roboto-Medium.ttf");
-			font = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(11f);
-			font_1 = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(14f);
-			font1 = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(16f);
-			font2 = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(22f);
-			File fontStyle1 = new File("/font/Oswald-Medium.ttf");
-			font3 = Font.createFont(Font.TRUETYPE_FONT, fontStyle1).deriveFont(18f);
+			InputStream fontStream = SetFont.class.getResourceAsStream("/font/Roboto-Medium.ttf");
+            assert fontStream != null;
+            font = Font.createFont(Font.TRUETYPE_FONT, fontStream).deriveFont(11f);
+			font_1 = Font.createFont(Font.TRUETYPE_FONT, fontStream).deriveFont(14f);
+			font1 = Font.createFont(Font.TRUETYPE_FONT, fontStream).deriveFont(16f);
+			font2 = Font.createFont(Font.TRUETYPE_FONT, fontStream).deriveFont(22f);
+
+			InputStream fontStream1 = SetFont.class.getResourceAsStream("/font/Oswald-Medium.ttf");
+            assert fontStream1 != null;
+            font3 = Font.createFont(Font.TRUETYPE_FONT, fontStream1).deriveFont(18f);
 
 		} catch (Exception e) {
 			System.out.println(e);
