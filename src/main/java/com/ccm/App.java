@@ -1,6 +1,6 @@
 package com.ccm;
 
-import com.ccm.view.LoginForm;
+import com.ccm.view.pre.LoginForm;
 
 public class App {
     public static void main(String[] args) {

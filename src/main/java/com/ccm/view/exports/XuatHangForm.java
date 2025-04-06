@@ -8,7 +8,7 @@ import com.ccm.controller.XuatPDF;
 import com.ccm.dao.*;
 import com.ccm.font.SetFont;
 import com.ccm.model.*;
-import com.ccm.view.LoginForm;
+import com.ccm.view.pre.LoginForm;
 import com.ccm.view.MainForm;
 import com.ccm.view.account.KhachHangForm;
 import com.ccm.view.imports.NhapHangForm;

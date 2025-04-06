@@ -1,4 +1,4 @@
-package com.ccm.view;
+package com.ccm.view.pre;
 
 import com.ccm.color.SetColor;
 import com.ccm.controller.BCrypt;
@@ -16,7 +16,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.File;
 import java.io.InputStream;
 import java.util.ArrayList;
 

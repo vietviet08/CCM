@@ -10,15 +10,9 @@ import java.net.URL;
 
 public class TrangChuForm extends JInternalFrame {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
     private JLabel labelLogo;
 
-    /**
-     * Launch the application.
-     */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -32,9 +26,6 @@ public class TrangChuForm extends JInternalFrame {
         });
     }
 
-    /**
-     * Create the frame.
-     */
     public TrangChuForm() {
         getContentPane().setBackground(Color.WHITE);
         setBounds(100, 100, 1170, 730);

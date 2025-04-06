@@ -1,4 +1,4 @@
-package com.ccm.view;
+package com.ccm.view.statistics;
 
 import com.ccm.chart.ModelPieChart;
 import com.ccm.chart.PieChart;

@@ -1,4 +1,4 @@
-package com.ccm.view;
+package com.ccm.view.setting;
 
 import com.ccm.color.SetColor;
 import com.ccm.font.SetFont;

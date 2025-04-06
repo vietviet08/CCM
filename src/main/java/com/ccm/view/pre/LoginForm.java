@@ -1,4 +1,4 @@
-package com.ccm.view;
+package com.ccm.view.pre;
 
 import com.ccm.color.SetColor;
 import com.ccm.controller.BCrypt;
@@ -6,6 +6,7 @@ import com.ccm.dao.AccountDAO;
 import com.ccm.decor.ButtonRound;
 import com.ccm.decor.ProgressBarCustom;
 import com.ccm.model.Account;
+import com.ccm.view.MainForm;
 import com.formdev.flatlaf.FlatLightLaf;
 
 import javax.swing.*;
@@ -16,7 +17,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.File;
 import java.io.InputStream;
 
 public class LoginForm extends JFrame {
