@@ -16,6 +16,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -156,46 +158,51 @@ public class KhachHangForm extends JInternalFrame {
                 return returnComp;
             }
         };
-        table.addMouseListener(new MouseAdapter() {
+
+        table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                try {
-                    KhachHang kh = KhachHangDAO.getInstance().selectAll().get(table.getSelectedRow());
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()) {
+                    try {
+                        int selectedRow = table.getSelectedRow();
 
-                    tfID.setText(kh.getIdKhachHang());
-                    tfTen.setText(kh.getTenKhachHang());
-                    tfDiaChi.setText(kh.getDiaChi());
-                    tfEmail.setText(kh.getEmail());
-                    tfSDT.setText(kh.getSdt());
-                    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-                    tfNgayThamGia.setText(sdf.format(kh.getNgayThamGia()));
+                        if (selectedRow == -1) return;
 
-                    labelStatus.setText("Status: " + kh.getStatus());
+                        KhachHang kh = KhachHangDAO.getInstance().selectAll().get(selectedRow);
 
-                    if (kh.getImg() == null) {
-                        labelIMG.setIcon(null);
-                        labelIMG.setText("Khách hàng chưa có ảnh!");
-                    } else {
+                        tfID.setText(kh.getIdKhachHang());
+                        tfTen.setText(kh.getTenKhachHang());
+                        tfDiaChi.setText(kh.getDiaChi());
+                        tfEmail.setText(kh.getEmail());
+                        tfSDT.setText(kh.getSdt());
 
-                        Blob blob = kh.getImg();
-                        byte[] by = blob.getBytes(1, (int) blob.length());
-                        ImageIcon ii = new ImageIcon(by);
-                        Image i = ii.getImage().getScaledInstance(labelIMG.getWidth(), labelIMG.getHeight(),
-                                Image.SCALE_SMOOTH);
-                        ii = new ImageIcon(i);
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                        tfNgayThamGia.setText(sdf.format(kh.getNgayThamGia()));
 
-                        labelIMG.setText("");
-                        labelIMG.setIcon(ii);
+                        labelStatus.setText("Status: " + kh.getStatus());
 
+                        if (kh.getImg() == null) {
+                            labelIMG.setIcon(null);
+                            labelIMG.setText("Khách hàng chưa có ảnh!");
+                        } else {
+                            Blob blob = kh.getImg();
+                            byte[] by = blob.getBytes(1, (int) blob.length());
+                            ImageIcon ii = new ImageIcon(by);
+                            Image i = ii.getImage().getScaledInstance(labelIMG.getWidth(), labelIMG.getHeight(),
+                                    Image.SCALE_SMOOTH);
+                            ii = new ImageIcon(i);
 
+                            labelIMG.setText("");
+                            labelIMG.setIcon(ii);
+                        }
+
+                    } catch (Exception e2) {
+                        e2.printStackTrace();
                     }
-
-                } catch (Exception e2) {
-                    System.out.println(e2);
                 }
-
             }
         });
+
         table.getTableHeader().setFont(SetFont.font());
         table.getTableHeader().setBackground(SetColor.blueOp);
         table.setModel(new DefaultTableModel(new Object[][]{},

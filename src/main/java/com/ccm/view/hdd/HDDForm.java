@@ -11,6 +11,8 @@ import com.ccm.font.SetFont;
 import com.ccm.model.HDD;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
@@ -205,40 +207,42 @@ public class HDDForm extends JInternalFrame {
                 return returnComp;
             }
         };
-        table.addMouseListener(new MouseAdapter() {
+        table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()) {
+                    HDD HDD = getHddSelect();
 
-                HDD HDD = getHddSelect();
+                    labelTen.setText(HDD.getTenHdd());
+                    labelBaoHanh.setText("Bảo hành: " + HDD.getBaoHanh());
+                    labelTien.setText(FormatToVND.vnd(HDD.getGia()));
+                    labelBoNhoDem.setText(HDD.getBoNhoDem());
+                    labelDungLuong.setText(HDD.getDungLuong());
+                    labelTocDoVongQuay.setText(HDD.getTocDoVongQuay());
+                    labelLuotBan.setText(ChiTietPhieuXuatDAO.getInstance().tongDonXuatSPRieng(HDD.getIdhHdd()) + "");
+                    txtrAbc.setText(SanPhamDAO.getInstance().selectById(HDD.getIdSanPham()).getMoTa());
 
-                labelTen.setText(HDD.getTenHdd());
-                labelBaoHanh.setText("Bảo hành: " + HDD.getBaoHanh());
-                labelTien.setText(FormatToVND.vnd(HDD.getGia()));
-                labelBoNhoDem.setText(HDD.getBoNhoDem());
-                labelDungLuong.setText(HDD.getDungLuong());
-                labelTocDoVongQuay.setText(HDD.getTocDoVongQuay());
-                labelLuotBan.setText(ChiTietPhieuXuatDAO.getInstance().tongDonXuatSPRieng(HDD.getIdhHdd()) + "");
-                txtrAbc.setText(SanPhamDAO.getInstance().selectById(HDD.getIdSanPham()).getMoTa());
-
-                if (HDD.getImg() == null) {
-                    labelIMG.setIcon(new ImageIcon(HDDForm.class.getResource("/icon/icons8-no-image-14.png")));
-                    labelIMG.setText("Sản phẩm hiện chưa có ảnh mẫu");
-                } else {
-                    Blob blob = HDD.getImg();
-                    try {
-                        byte[] by = blob.getBytes(1, (int) blob.length());
-                        ImageIcon ii = new ImageIcon(by);
-                        Image i = ii.getImage().getScaledInstance(labelIMG.getWidth(), labelIMG.getHeight(),
-                                Image.SCALE_SMOOTH);
-                        ii = new ImageIcon(i);
-                        labelIMG.setIcon(ii);
-                    } catch (SQLException e1) {
-                        e1.printStackTrace();
+                    if (HDD.getImg() == null) {
+                        labelIMG.setIcon(new ImageIcon(HDDForm.class.getResource("/icon/icons8-no-image-14.png")));
+                        labelIMG.setText("Sản phẩm hiện chưa có ảnh mẫu");
+                    } else {
+                        Blob blob = HDD.getImg();
+                        try {
+                            byte[] by = blob.getBytes(1, (int) blob.length());
+                            ImageIcon ii = new ImageIcon(by);
+                            Image i = ii.getImage().getScaledInstance(labelIMG.getWidth(), labelIMG.getHeight(),
+                                    Image.SCALE_SMOOTH);
+                            ii = new ImageIcon(i);
+                            labelIMG.setIcon(ii);
+                            labelIMG.setText("");
+                        } catch (SQLException e1) {
+                            e1.printStackTrace();
+                        }
                     }
                 }
-
             }
         });
+
         table.getTableHeader().setFont(SetFont.font());
         table.getTableHeader().setBackground(SetColor.blueOp);
         scrollPane.setViewportView(table);

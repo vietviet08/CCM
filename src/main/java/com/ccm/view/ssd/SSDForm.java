@@ -16,6 +16,8 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -303,37 +305,38 @@ public class SSDForm extends JInternalFrame {
                 return returnComp;
             }
         };
-        table.addMouseListener(new MouseAdapter() {
+        table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                SSD SSD = getSsdSelect();
-                labelTen.setText(SSD.getTenSsd());
-                labelBaoHanh.setText("Bảo hành: " + SSD.getBaoHanh());
-                labelTien.setText(FormatToVND.vnd(SSD.getGia()));
-                labelLoaiAndDungLuong.setText(SSD.getLoai() + " - " + SSD.getDungLuong());
-                labelTocDoDoc.setText("Tốc độ đọc: " + SSD.getTocDoDoc());
-                labelTocDoGhi.setText("Tốc độ ghi: " + SSD.getTocDoGhi());
-                labelLuotBan.setText(ChiTietPhieuXuatDAO.getInstance().tongDonXuatSPRieng(SSD.getIdSdd()) + "");
-                txtrAbc.setText(SanPhamDAO.getInstance().selectById(SSD.getIdSanPham()).getMoTa());
-                if (SSD.getImg() == null) {
-                    labelIMG.setIcon(null);
-                    labelIMG.setIcon(new ImageIcon(SSDForm.class.getResource("/icon/icons8-no-image-14.png")));
-                    labelIMG.setText("Sản phẩm hiện chưa có ảnh mẫu");
-                } else {
-                    labelIMG.setText("");
-                    Blob blob = SSD.getImg();
-                    try {
-                        byte[] by = blob.getBytes(1, (int) blob.length());
-                        ImageIcon ii = new ImageIcon(by);
-                        Image i = ii.getImage().getScaledInstance(labelIMG.getWidth(), labelIMG.getHeight(),
-                                Image.SCALE_SMOOTH);
-                        ii = new ImageIcon(i);
-                        labelIMG.setIcon(ii);
-                    } catch (SQLException e1) {
-                        e1.printStackTrace();
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()) {
+                    SSD SSD = getSsdSelect();
+                    labelTen.setText(SSD.getTenSsd());
+                    labelBaoHanh.setText("Bảo hành: " + SSD.getBaoHanh());
+                    labelTien.setText(FormatToVND.vnd(SSD.getGia()));
+                    labelLoaiAndDungLuong.setText(SSD.getLoai() + " - " + SSD.getDungLuong());
+                    labelTocDoDoc.setText("Tốc độ đọc: " + SSD.getTocDoDoc());
+                    labelTocDoGhi.setText("Tốc độ ghi: " + SSD.getTocDoGhi());
+                    labelLuotBan.setText(ChiTietPhieuXuatDAO.getInstance().tongDonXuatSPRieng(SSD.getIdSdd()) + "");
+                    txtrAbc.setText(SanPhamDAO.getInstance().selectById(SSD.getIdSanPham()).getMoTa());
+                    if (SSD.getImg() == null) {
+                        labelIMG.setIcon(null);
+                        labelIMG.setIcon(new ImageIcon(SSDForm.class.getResource("/icon/icons8-no-image-14.png")));
+                        labelIMG.setText("Sản phẩm hiện chưa có ảnh mẫu");
+                    } else {
+                        labelIMG.setText("");
+                        Blob blob = SSD.getImg();
+                        try {
+                            byte[] by = blob.getBytes(1, (int) blob.length());
+                            ImageIcon ii = new ImageIcon(by);
+                            Image i = ii.getImage().getScaledInstance(labelIMG.getWidth(), labelIMG.getHeight(),
+                                    Image.SCALE_SMOOTH);
+                            ii = new ImageIcon(i);
+                            labelIMG.setIcon(ii);
+                        } catch (SQLException e1) {
+                            e1.printStackTrace();
+                        }
                     }
                 }
-
             }
         });
         table.getTableHeader().setFont(SetFont.font());

@@ -16,6 +16,8 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -305,37 +307,39 @@ public class CaseForm extends JInternalFrame {
         };
         table.getTableHeader().setFont(SetFont.font());
         table.getTableHeader().setBackground(SetColor.blueOp);
-        table.addMouseListener(new MouseAdapter() {
+        table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                Case c = CaseDAO.getInstance().selectById(table.getValueAt(table.getSelectedRow(), 1).toString());
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()) {
+                    Case c = CaseDAO.getInstance().selectById(table.getValueAt(table.getSelectedRow(), 1).toString());
 
-                labelTen.setText(c.getTenCase());
-                labelTien.setText(FormatToVND.vnd(c.getGia()));
-                labelBaoHanh.setText("Bảo hành: " + c.getBaoHanh());
-                labelChatLieu.setText(c.getChatLieu());
-                labelLoai.setText(c.getLoaiCase());
-                labelKichThuoc.setText(c.getKichThuocMainboard());
-                labelLuotBan.setText(ChiTietPhieuXuatDAO.getInstance().tongDonXuatSPRieng(c.getIdCase()) + "");
+                    labelTen.setText(c.getTenCase());
+                    labelTien.setText(FormatToVND.vnd(c.getGia()));
+                    labelBaoHanh.setText("Bảo hành: " + c.getBaoHanh());
+                    labelChatLieu.setText(c.getChatLieu());
+                    labelLoai.setText(c.getLoaiCase());
+                    labelKichThuoc.setText(c.getKichThuocMainboard());
+                    labelLuotBan.setText(ChiTietPhieuXuatDAO.getInstance().tongDonXuatSPRieng(c.getIdCase()) + "");
 
-                txtrAbc.setText(SanPhamDAO.getInstance().selectById(c.getIdSanPham()).getMoTa());
+                    txtrAbc.setText(SanPhamDAO.getInstance().selectById(c.getIdSanPham()).getMoTa());
 
-                if (c.getImg() == null) {
-                    labelIMG.setIcon(null);
-                    labelIMG.setIcon(new ImageIcon(CaseForm.class.getResource("/icon/icons8-no-image-14.png")));
-                    labelIMG.setText("Sản phẩm hiện chưa có ảnh mẫu");
-                } else {
-                    Blob blob = c.getImg();
-                    try {
-                        byte[] by = blob.getBytes(1, (int) blob.length());
-                        ImageIcon ii = new ImageIcon(by);
-                        Image i = ii.getImage().getScaledInstance(labelIMG.getWidth(), labelIMG.getHeight(),
-                                Image.SCALE_SMOOTH);
-                        ii = new ImageIcon(i);
-                        labelIMG.setText("");
-                        labelIMG.setIcon(ii);
-                    } catch (SQLException e1) {
-                        e1.printStackTrace();
+                    if (c.getImg() == null) {
+                        labelIMG.setIcon(null);
+                        labelIMG.setIcon(new ImageIcon(CaseForm.class.getResource("/icon/icons8-no-image-14.png")));
+                        labelIMG.setText("Sản phẩm hiện chưa có ảnh mẫu");
+                    } else {
+                        Blob blob = c.getImg();
+                        try {
+                            byte[] by = blob.getBytes(1, (int) blob.length());
+                            ImageIcon ii = new ImageIcon(by);
+                            Image i = ii.getImage().getScaledInstance(labelIMG.getWidth(), labelIMG.getHeight(),
+                                    Image.SCALE_SMOOTH);
+                            ii = new ImageIcon(i);
+                            labelIMG.setText("");
+                            labelIMG.setIcon(ii);
+                        } catch (SQLException e1) {
+                            e1.printStackTrace();
+                        }
                     }
                 }
             }

@@ -20,6 +20,8 @@ import java.util.Collections;
 import java.util.Comparator;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -353,42 +355,43 @@ public class RAMForm extends JInternalFrame {
                 return returnComp;
             }
         };
-        table.addMouseListener(new MouseAdapter() {
+        table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()) {
 //				RAM r = getSelectRAM();
 
-                RAM r = RAMDAO.getInstance().selectById(String.valueOf(table.getValueAt(table.getSelectedRow(), 1)));
+                    RAM r = RAMDAO.getInstance().selectById(String.valueOf(table.getValueAt(table.getSelectedRow(), 1)));
 
-                labelTen.setText(r.getTenRam());
-                labelTien.setText(FormatToVND.vnd(r.getDonGia()));
-                labelBaoHanh.setText("Bảo hành: " + r.getBaoHanh());
-                labelLuotBan.setText(ChiTietPhieuXuatDAO.getInstance().tongDonXuatSPRieng(r.getIdRam()) + "");
-                labelLoaiRam.setText("Loại RAM: " + r.getLoai());
-                labelDungLuong.setText("Dung lượng: " + r.getDungLuong());
-                labelBus.setText("BUS: " + r.getBus());
-                textArea.setText(SanPhamDAO.getInstance().selectById(r.getIdSanPham()).getMoTa());
+                    labelTen.setText(r.getTenRam());
+                    labelTien.setText(FormatToVND.vnd(r.getDonGia()));
+                    labelBaoHanh.setText("Bảo hành: " + r.getBaoHanh());
+                    labelLuotBan.setText(ChiTietPhieuXuatDAO.getInstance().tongDonXuatSPRieng(r.getIdRam()) + "");
+                    labelLoaiRam.setText("Loại RAM: " + r.getLoai());
+                    labelDungLuong.setText("Dung lượng: " + r.getDungLuong());
+                    labelBus.setText("BUS: " + r.getBus());
+                    textArea.setText(SanPhamDAO.getInstance().selectById(r.getIdSanPham()).getMoTa());
 
-                if (r.getImg() == null) {
-                    labelIMG.setIcon(null);
-                    labelIMG.setIcon(new ImageIcon(MainboardForm.class.getResource("/icon/icons8-no-image-14.png")));
-                    labelIMG.setText("Sản phẩm hiện chưa có ảnh mẫu!");
-                } else {
-                    labelIMG.setBorder(null);
-                    Blob blob = r.getImg();
-                    try {
-                        byte[] by = blob.getBytes(1, (int) blob.length());
-                        ImageIcon ii = new ImageIcon(by);
-                        Image i = ii.getImage().getScaledInstance(labelIMG.getWidth(), labelIMG.getHeight(),
-                                Image.SCALE_SMOOTH);
-                        ii = new ImageIcon(i);
-                        labelIMG.setText("");
-                        labelIMG.setIcon(ii);
-                    } catch (SQLException e1) {
-                        e1.printStackTrace();
+                    if (r.getImg() == null) {
+                        labelIMG.setIcon(null);
+                        labelIMG.setIcon(new ImageIcon(MainboardForm.class.getResource("/icon/icons8-no-image-14.png")));
+                        labelIMG.setText("Sản phẩm hiện chưa có ảnh mẫu!");
+                    } else {
+                        labelIMG.setBorder(null);
+                        Blob blob = r.getImg();
+                        try {
+                            byte[] by = blob.getBytes(1, (int) blob.length());
+                            ImageIcon ii = new ImageIcon(by);
+                            Image i = ii.getImage().getScaledInstance(labelIMG.getWidth(), labelIMG.getHeight(),
+                                    Image.SCALE_SMOOTH);
+                            ii = new ImageIcon(i);
+                            labelIMG.setText("");
+                            labelIMG.setIcon(ii);
+                        } catch (SQLException e1) {
+                            e1.printStackTrace();
+                        }
                     }
                 }
-
             }
         });
         table.getTableHeader().setBackground(SetColor.blueOp);
